@@ -1,0 +1,89 @@
+﻿@model ProyectoDSWI.Entity.Visitante1
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="text-center">CONFIRMACIÓN DE BAJA DE VISITANTE</h2>
+
+<h3 class="text-center">Está seguro de dar de baja al Visitante => @Model.idVisi</h3>
+<div>
+    <h4 class="text-center">Datos del Visitante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idVisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idVisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomVisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomVisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apeVisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apeVisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dniVisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dniVisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.movilVisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.movilVisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuReg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuReg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idProp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idProp)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Dar de baja" class="btn btn-danger" /> |
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    }
+</div>

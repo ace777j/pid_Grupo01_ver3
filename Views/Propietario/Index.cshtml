@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ProyectoDSWI.Entity.Propietario1>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">MAESTRO DE PROPIETARIOS</h2>
+
+<p>
+    @Html.ActionLink("Agregar Nuevo Propietario", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idProp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomProp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apeProp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dniProp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correoProp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.movilProp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuReg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idDepa)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr class="bg-danger">
+    <td>
+        @Html.DisplayFor(modelItem => item.idProp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nomProp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.apeProp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dniProp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.correoProp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.movilProp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fechaRegistro)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.usuReg)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.idDepa)
+    </td>
+    <td>
+        @Html.ActionLink("Actualizar", "Edit", new { id = item.idProp }) |
+        @Html.ActionLink("Ver Detalles", "Details", new { id = item.idProp }) |
+        @Html.ActionLink("Dar de Baja", "Delete", new { id = item.idProp })
+    </td>
+</tr>
+    }
+
+</table>

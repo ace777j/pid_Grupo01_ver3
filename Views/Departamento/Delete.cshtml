@@ -1,0 +1,73 @@
+﻿@model ProyectoDSWI.Entity.Departamento1
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="text-center">CONFIRMACIÓN DE BAJA DE DEPARTAMENTO</h2>
+
+<h3 class="text-center">Está seguro de dar de baja al Departamento => N° @Model.idDepa</h3>
+<div>
+    <h4 class="text-center">Datos del Departamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idDepa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idDepa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nroPiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nroPiso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuReg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuReg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idEstado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idTipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idTipo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Dar de baja" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

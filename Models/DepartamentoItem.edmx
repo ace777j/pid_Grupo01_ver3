@@ -1,0 +1,1069 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_PIGrupo01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="idDepa" />
+          </Key>
+          <Property Name="idDepa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nroPiso" Type="varchar" MaxLength="50" />
+          <Property Name="fechaRegistro" Type="datetime" />
+          <Property Name="usuReg" Type="varchar" MaxLength="50" />
+          <Property Name="idEstado" Type="int" />
+          <Property Name="idTipo" Type="int" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Mascota">
+          <Key>
+            <PropertyRef Name="idMascota" />
+          </Key>
+          <Property Name="idMascota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoMascota" Type="varchar" MaxLength="50" />
+          <Property Name="nroMascota" Type="varchar" MaxLength="50" />
+          <Property Name="idProp" Type="int" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="idModulo" Type="int" />
+        </EntityType>
+        <EntityType Name="Propietario">
+          <Key>
+            <PropertyRef Name="idProp" />
+          </Key>
+          <Property Name="idProp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomProp" Type="varchar" MaxLength="50" />
+          <Property Name="apeProp" Type="varchar" MaxLength="50" />
+          <Property Name="dniProp" Type="varchar" MaxLength="50" />
+          <Property Name="correoProp" Type="varchar" MaxLength="50" />
+          <Property Name="movilProp" Type="varchar" MaxLength="50" />
+          <Property Name="fechaRegistro" Type="datetime" />
+          <Property Name="usuReg" Type="varchar" MaxLength="50" />
+          <Property Name="idDepa" Type="int" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rol_operacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRol" Type="int" />
+          <Property Name="idOperacion" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoDepartamento">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="nroDormitorios" Type="int" />
+          <Property Name="nroBanos" Type="int" />
+          <Property Name="areaDepar" Type="varchar" MaxLength="45" />
+          <Property Name="precMens" Type="float" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="200" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="idRol" Type="int" />
+        </EntityType>
+        <EntityType Name="Visitante">
+          <Key>
+            <PropertyRef Name="idVisi" />
+          </Key>
+          <Property Name="idVisi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomVisi" Type="varchar" MaxLength="50" />
+          <Property Name="apeVisi" Type="varchar" MaxLength="50" />
+          <Property Name="dniVisi" Type="varchar" MaxLength="50" />
+          <Property Name="movilVisi" Type="varchar" MaxLength="50" />
+          <Property Name="fechaRegistro" Type="datetime" />
+          <Property Name="usuReg" Type="varchar" MaxLength="50" />
+          <Property Name="idProp" Type="int" />
+        </EntityType>
+        <Association Name="FK__Departame__idEst__164452B1">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Departame__idTip__173876EA">
+          <End Role="TipoDepartamento" Type="Self.TipoDepartamento" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDepartamento">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota__idProp__1ED998B2">
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="0..1" />
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propietario">
+              <PropertyRef Name="idProp" />
+            </Principal>
+            <Dependent Role="Mascota">
+              <PropertyRef Name="idProp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Propietar__idDep__1B0907CE">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="idDepa" />
+            </Principal>
+            <Dependent Role="Propietario">
+              <PropertyRef Name="idDepa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visitante__idPro__22AA2996">
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="0..1" />
+          <End Role="Visitante" Type="Self.Visitante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propietario">
+              <PropertyRef Name="idProp" />
+            </Principal>
+            <Dependent Role="Visitante">
+              <PropertyRef Name="idProp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_operaciones_modulo">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="0..1" />
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_operacion_operaciones">
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idOperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_operacion_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_DepartamentoActualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDepa" Type="int" Mode="In" />
+          <Parameter Name="nroPiso" Type="varchar" Mode="In" />
+          <Parameter Name="fechaRegistro" Type="datetime" Mode="In" />
+          <Parameter Name="usuReg" Type="varchar" Mode="In" />
+          <Parameter Name="idEstado" Type="int" Mode="In" />
+          <Parameter Name="idTipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DepartamentoDatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDepa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DepartamentoEliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDepa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DepartamentoInsertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nroPiso" Type="varchar" Mode="In" />
+          <Parameter Name="fechaRegistro" Type="datetime" Mode="In" />
+          <Parameter Name="usuReg" Type="varchar" Mode="In" />
+          <Parameter Name="idEstado" Type="int" Mode="In" />
+          <Parameter Name="idTipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_DepartamentoListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_EstadoListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_MascotaActualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMascota" Type="int" Mode="In" />
+          <Parameter Name="tipoMascota" Type="varchar" Mode="In" />
+          <Parameter Name="nroMascota" Type="varchar" Mode="In" />
+          <Parameter Name="idProp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_MascotaDatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMascota" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_MascotaEliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMascota" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_MascotaInsertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipoMascota" Type="varchar" Mode="In" />
+          <Parameter Name="nroMascota" Type="varchar" Mode="In" />
+          <Parameter Name="idProp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_MascotaListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_PropietarioActualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProp" Type="int" Mode="In" />
+          <Parameter Name="nomProp" Type="varchar" Mode="In" />
+          <Parameter Name="apeProp" Type="varchar" Mode="In" />
+          <Parameter Name="dniProp" Type="varchar" Mode="In" />
+          <Parameter Name="correoProp" Type="varchar" Mode="In" />
+          <Parameter Name="movilProp" Type="varchar" Mode="In" />
+          <Parameter Name="fechaRegistro" Type="datetime" Mode="In" />
+          <Parameter Name="usuReg" Type="varchar" Mode="In" />
+          <Parameter Name="idDepa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_PropietarioDatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_PropietarioEliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_PropietarioInsertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nomProp" Type="varchar" Mode="In" />
+          <Parameter Name="apeProp" Type="varchar" Mode="In" />
+          <Parameter Name="dniProp" Type="varchar" Mode="In" />
+          <Parameter Name="correoProp" Type="varchar" Mode="In" />
+          <Parameter Name="movilProp" Type="varchar" Mode="In" />
+          <Parameter Name="fechaRegistro" Type="datetime" Mode="In" />
+          <Parameter Name="usuReg" Type="varchar" Mode="In" />
+          <Parameter Name="idDepa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_PropietarioListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_TipoDepartamentoListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_VisitanteActualizar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVisi" Type="int" Mode="In" />
+          <Parameter Name="nomVisi" Type="varchar" Mode="In" />
+          <Parameter Name="apeVisi" Type="varchar" Mode="In" />
+          <Parameter Name="dniVisi" Type="varchar" Mode="In" />
+          <Parameter Name="movilVisi" Type="varchar" Mode="In" />
+          <Parameter Name="fechaRegistro" Type="datetime" Mode="In" />
+          <Parameter Name="usuReg" Type="varchar" Mode="In" />
+          <Parameter Name="idProp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_VisitanteDatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVisi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_VisitanteEliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVisi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_VisitanteInsertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nomVisi" Type="varchar" Mode="In" />
+          <Parameter Name="apeVisi" Type="varchar" Mode="In" />
+          <Parameter Name="dniVisi" Type="varchar" Mode="In" />
+          <Parameter Name="movilVisi" Type="varchar" Mode="In" />
+          <Parameter Name="fechaRegistro" Type="datetime" Mode="In" />
+          <Parameter Name="usuReg" Type="varchar" Mode="In" />
+          <Parameter Name="idProp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_VisitanteListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DB_PIGrupo01ModelStoreContainer">
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mascota" EntityType="Self.Mascota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Propietario" EntityType="Self.Propietario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDepartamento" EntityType="Self.TipoDepartamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visitante" EntityType="Self.Visitante" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Departame__idEst__164452B1" Association="Self.FK__Departame__idEst__164452B1">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Departame__idTip__173876EA" Association="Self.FK__Departame__idTip__173876EA">
+            <End Role="TipoDepartamento" EntitySet="TipoDepartamento" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota__idProp__1ED998B2" Association="Self.FK__Mascota__idProp__1ED998B2">
+            <End Role="Propietario" EntitySet="Propietario" />
+            <End Role="Mascota" EntitySet="Mascota" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Propietar__idDep__1B0907CE" Association="Self.FK__Propietar__idDep__1B0907CE">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Propietario" EntitySet="Propietario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visitante__idPro__22AA2996" Association="Self.FK__Visitante__idPro__22AA2996">
+            <End Role="Propietario" EntitySet="Propietario" />
+            <End Role="Visitante" EntitySet="Visitante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_operaciones_modulo" Association="Self.FK_operaciones_modulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_operaciones" Association="Self.FK_rol_operacion_operaciones">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_rol" Association="Self.FK_rol_operacion_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_rol" Association="Self.FK_usuario_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_PIGrupo01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="idDepa" />
+          </Key>
+          <Property Name="idDepa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nroPiso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="usuReg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idEstado" Type="Int32" />
+          <Property Name="idTipo" Type="Int32" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK__Departame__idEst__164452B1" FromRole="Departamento" ToRole="Estado" />
+          <NavigationProperty Name="TipoDepartamento" Relationship="Self.FK__Departame__idTip__173876EA" FromRole="Departamento" ToRole="TipoDepartamento" />
+          <NavigationProperty Name="Propietario" Relationship="Self.FK__Propietar__idDep__1B0907CE" FromRole="Departamento" ToRole="Propietario" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK__Departame__idEst__164452B1" FromRole="Estado" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Mascota">
+          <Key>
+            <PropertyRef Name="idMascota" />
+          </Key>
+          <Property Name="idMascota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoMascota" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nroMascota" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idProp" Type="Int32" />
+          <NavigationProperty Name="Propietario" Relationship="Self.FK__Mascota__idProp__1ED998B2" FromRole="Mascota" ToRole="Propietario" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="operaciones" Relationship="Self.FK_operaciones_modulo" FromRole="modulo" ToRole="operaciones" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idModulo" Type="Int32" />
+          <NavigationProperty Name="modulo" Relationship="Self.FK_operaciones_modulo" FromRole="operaciones" ToRole="modulo" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK_rol_operacion_operaciones" FromRole="operaciones" ToRole="rol_operacion" />
+        </EntityType>
+        <EntityType Name="Propietario">
+          <Key>
+            <PropertyRef Name="idProp" />
+          </Key>
+          <Property Name="idProp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomProp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apeProp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dniProp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="correoProp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="movilProp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="usuReg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idDepa" Type="Int32" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK__Propietar__idDep__1B0907CE" FromRole="Propietario" ToRole="Departamento" />
+          <NavigationProperty Name="Mascota" Relationship="Self.FK__Mascota__idProp__1ED998B2" FromRole="Propietario" ToRole="Mascota" />
+          <NavigationProperty Name="Visitante" Relationship="Self.FK__Visitante__idPro__21B6055D" FromRole="Propietario" ToRole="Visitante" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK_rol_operacion_rol" FromRole="rol" ToRole="rol_operacion" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_rol" FromRole="rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="rol_operacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" />
+          <Property Name="idOperacion" Type="Int32" />
+          <NavigationProperty Name="operaciones" Relationship="Self.FK_rol_operacion_operaciones" FromRole="rol_operacion" ToRole="operaciones" />
+          <NavigationProperty Name="rol" Relationship="Self.FK_rol_operacion_rol" FromRole="rol_operacion" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="TipoDepartamento">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nroDormitorios" Type="Int32" />
+          <Property Name="nroBanos" Type="Int32" />
+          <Property Name="areaDepar" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="precMens" Type="Double" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK__Departame__idTip__173876EA" FromRole="TipoDepartamento" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="idRol" Type="Int32" />
+          <NavigationProperty Name="rol" Relationship="Self.FK_usuario_rol" FromRole="usuario" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="Visitante">
+          <Key>
+            <PropertyRef Name="idVisi" />
+          </Key>
+          <Property Name="idVisi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomVisi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apeVisi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dniVisi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="movilVisi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="usuReg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idProp" Type="Int32" />
+          <NavigationProperty Name="Propietario" Relationship="Self.FK__Visitante__idPro__21B6055D" FromRole="Visitante" ToRole="Propietario" />
+        </EntityType>
+        <Association Name="FK__Departame__idEst__164452B1">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="idEstado" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Departame__idTip__173876EA">
+          <End Role="TipoDepartamento" Type="Self.TipoDepartamento" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDepartamento">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Propietar__idDep__1B0907CE">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="idDepa" />
+            </Principal>
+            <Dependent Role="Propietario">
+              <PropertyRef Name="idDepa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota__idProp__1ED998B2">
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="0..1" />
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propietario">
+              <PropertyRef Name="idProp" />
+            </Principal>
+            <Dependent Role="Mascota">
+              <PropertyRef Name="idProp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_operaciones_modulo">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="0..1" />
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_operacion_operaciones">
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idOperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visitante__idPro__21B6055D">
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="0..1" />
+          <End Role="Visitante" Type="Self.Visitante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propietario">
+              <PropertyRef Name="idProp" />
+            </Principal>
+            <Dependent Role="Visitante">
+              <PropertyRef Name="idProp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_operacion_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_PIGrupo01Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Mascota" EntityType="Self.Mascota" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" />
+          <EntitySet Name="Propietario" EntityType="Self.Propietario" />
+          <EntitySet Name="rol" EntityType="Self.rol" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" />
+          <EntitySet Name="TipoDepartamento" EntityType="Self.TipoDepartamento" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <EntitySet Name="Visitante" EntityType="Self.Visitante" />
+          <AssociationSet Name="FK__Departame__idEst__164452B1" Association="Self.FK__Departame__idEst__164452B1">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Departame__idTip__173876EA" Association="Self.FK__Departame__idTip__173876EA">
+            <End Role="TipoDepartamento" EntitySet="TipoDepartamento" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Propietar__idDep__1B0907CE" Association="Self.FK__Propietar__idDep__1B0907CE">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Propietario" EntitySet="Propietario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota__idProp__1ED998B2" Association="Self.FK__Mascota__idProp__1ED998B2">
+            <End Role="Propietario" EntitySet="Propietario" />
+            <End Role="Mascota" EntitySet="Mascota" />
+          </AssociationSet>
+          <AssociationSet Name="FK_operaciones_modulo" Association="Self.FK_operaciones_modulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_operaciones" Association="Self.FK_rol_operacion_operaciones">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visitante__idPro__21B6055D" Association="Self.FK__Visitante__idPro__21B6055D">
+            <End Role="Propietario" EntitySet="Propietario" />
+            <End Role="Visitante" EntitySet="Visitante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_rol" Association="Self.FK_rol_operacion_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_rol" Association="Self.FK_usuario_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <FunctionImport Name="usp_DepartamentoActualizar">
+            <Parameter Name="idDepa" Mode="In" Type="Int32" />
+            <Parameter Name="nroPiso" Mode="In" Type="String" />
+            <Parameter Name="fechaRegistro" Mode="In" Type="DateTime" />
+            <Parameter Name="usuReg" Mode="In" Type="String" />
+            <Parameter Name="idEstado" Mode="In" Type="Int32" />
+            <Parameter Name="idTipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DepartamentoDatos" ReturnType="Collection(DB_PIGrupo01Model.usp_DepartamentoDatos_Result)">
+          <Parameter Name="idDepa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DepartamentoEliminar">
+          <Parameter Name="idDepa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DepartamentoInsertar">
+            <Parameter Name="nroPiso" Mode="In" Type="String" />
+            <Parameter Name="fechaRegistro" Mode="In" Type="DateTime" />
+            <Parameter Name="usuReg" Mode="In" Type="String" />
+            <Parameter Name="idEstado" Mode="In" Type="Int32" />
+            <Parameter Name="idTipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DepartamentoListar" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="usp_EstadoListar" ReturnType="Collection(DB_PIGrupo01Model.usp_EstadoListar_Result)" />
+          <FunctionImport Name="usp_MascotaActualizar">
+            <Parameter Name="idMascota" Mode="In" Type="Int32" />
+            <Parameter Name="tipoMascota" Mode="In" Type="String" />
+            <Parameter Name="nroMascota" Mode="In" Type="String" />
+            <Parameter Name="idProp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_MascotaDatos" ReturnType="Collection(DB_PIGrupo01Model.usp_MascotaDatos_Result)">
+          <Parameter Name="idMascota" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_MascotaEliminar">
+          <Parameter Name="idMascota" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_MascotaInsertar">
+            <Parameter Name="tipoMascota" Mode="In" Type="String" />
+            <Parameter Name="nroMascota" Mode="In" Type="String" />
+            <Parameter Name="idProp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_PropietarioActualizar">
+            <Parameter Name="idProp" Mode="In" Type="Int32" />
+            <Parameter Name="nomProp" Mode="In" Type="String" />
+            <Parameter Name="apeProp" Mode="In" Type="String" />
+            <Parameter Name="dniProp" Mode="In" Type="String" />
+            <Parameter Name="correoProp" Mode="In" Type="String" />
+            <Parameter Name="movilProp" Mode="In" Type="String" />
+            <Parameter Name="fechaRegistro" Mode="In" Type="DateTime" />
+            <Parameter Name="usuReg" Mode="In" Type="String" />
+            <Parameter Name="idDepa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_PropietarioDatos" ReturnType="Collection(DB_PIGrupo01Model.usp_PropietarioDatos_Result)">
+          <Parameter Name="idProp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_PropietarioEliminar">
+          <Parameter Name="idProp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_PropietarioInsertar">
+            <Parameter Name="nomProp" Mode="In" Type="String" />
+            <Parameter Name="apeProp" Mode="In" Type="String" />
+            <Parameter Name="dniProp" Mode="In" Type="String" />
+            <Parameter Name="correoProp" Mode="In" Type="String" />
+            <Parameter Name="movilProp" Mode="In" Type="String" />
+            <Parameter Name="fechaRegistro" Mode="In" Type="DateTime" />
+            <Parameter Name="usuReg" Mode="In" Type="String" />
+            <Parameter Name="idDepa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_PropietarioListar" ReturnType="Collection(DB_PIGrupo01Model.usp_PropietarioListar_Result)" />
+          <FunctionImport Name="usp_TipoDepartamentoListar" ReturnType="Collection(DB_PIGrupo01Model.usp_TipoDepartamentoListar_Result)" />
+          <FunctionImport Name="usp_VisitanteActualizar">
+            <Parameter Name="idVisi" Mode="In" Type="Int32" />
+            <Parameter Name="nomVisi" Mode="In" Type="String" />
+            <Parameter Name="apeVisi" Mode="In" Type="String" />
+            <Parameter Name="dniVisi" Mode="In" Type="String" />
+            <Parameter Name="movilVisi" Mode="In" Type="String" />
+            <Parameter Name="fechaRegistro" Mode="In" Type="DateTime" />
+            <Parameter Name="usuReg" Mode="In" Type="String" />
+            <Parameter Name="idProp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_VisitanteDatos" ReturnType="Collection(DB_PIGrupo01Model.usp_VisitanteDatos_Result)">
+          <Parameter Name="idVisi" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_VisitanteEliminar">
+          <Parameter Name="idVisi" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_VisitanteInsertar">
+            <Parameter Name="nomVisi" Mode="In" Type="String" />
+            <Parameter Name="apeVisi" Mode="In" Type="String" />
+            <Parameter Name="dniVisi" Mode="In" Type="String" />
+            <Parameter Name="movilVisi" Mode="In" Type="String" />
+            <Parameter Name="fechaRegistro" Mode="In" Type="DateTime" />
+            <Parameter Name="usuReg" Mode="In" Type="String" />
+            <Parameter Name="idProp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_MascotaListar" ReturnType="Collection(DB_PIGrupo01Model.usp_MascotaListar_Result)" />
+          <FunctionImport Name="usp_VisitanteListar" ReturnType="Collection(DB_PIGrupo01Model.usp_VisitanteListar_Result)" />
+        </EntityContainer>
+        <ComplexType Name="usp_DepartamentoDatos_Result">
+          <Property Type="Int32" Name="idDepa" Nullable="false" />
+          <Property Type="String" Name="nroPiso" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaRegistro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuReg" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idEstado" Nullable="true" />
+          <Property Type="Int32" Name="idTipo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_EstadoListar_Result">
+          <Property Type="Int32" Name="idEstado" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="usp_MascotaDatos_Result">
+          <Property Type="Int32" Name="idMascota" Nullable="false" />
+          <Property Type="String" Name="tipoMascota" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nroMascota" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idProp" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_PropietarioDatos_Result">
+          <Property Type="Int32" Name="idProp" Nullable="false" />
+          <Property Type="String" Name="nomProp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="apeProp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="dniProp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correoProp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="movilProp" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaRegistro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuReg" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idDepa" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_PropietarioListar_Result">
+          <Property Type="Int32" Name="idProp" Nullable="false" />
+          <Property Type="String" Name="apeProp" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_TipoDepartamentoListar_Result">
+          <Property Type="Int32" Name="idTipo" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_VisitanteDatos_Result">
+          <Property Type="Int32" Name="idVisi" Nullable="false" />
+          <Property Type="String" Name="nomVisi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="apeVisi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="dniVisi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="movilVisi" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaRegistro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuReg" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idProp" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_MascotaListar_Result">
+          <Property Type="Int32" Name="idMascota" Nullable="false" />
+          <Property Type="String" Name="tipoMascota" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nroMascota" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idProp" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_VisitanteListar_Result">
+          <Property Type="Int32" Name="idVisi" Nullable="false" />
+          <Property Type="String" Name="nomVisi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="apeVisi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="dniVisi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="movilVisi" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaRegistro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuReg" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idProp" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_PIGrupo01ModelStoreContainer" CdmEntityContainer="DB_PIGrupo01Entities">
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="idDepa" ColumnName="idDepa" />
+                <ScalarProperty Name="nroPiso" ColumnName="nroPiso" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuReg" ColumnName="usuReg" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mascota">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.Mascota">
+              <MappingFragment StoreEntitySet="Mascota">
+                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
+                <ScalarProperty Name="tipoMascota" ColumnName="tipoMascota" />
+                <ScalarProperty Name="nroMascota" ColumnName="nroMascota" />
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modulo">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.modulo">
+              <MappingFragment StoreEntitySet="modulo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operaciones">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.operaciones">
+              <MappingFragment StoreEntitySet="operaciones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Propietario">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.Propietario">
+              <MappingFragment StoreEntitySet="Propietario">
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+                <ScalarProperty Name="nomProp" ColumnName="nomProp" />
+                <ScalarProperty Name="apeProp" ColumnName="apeProp" />
+                <ScalarProperty Name="dniProp" ColumnName="dniProp" />
+                <ScalarProperty Name="correoProp" ColumnName="correoProp" />
+                <ScalarProperty Name="movilProp" ColumnName="movilProp" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuReg" ColumnName="usuReg" />
+                <ScalarProperty Name="idDepa" ColumnName="idDepa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol_operacion">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.rol_operacion">
+              <MappingFragment StoreEntitySet="rol_operacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idOperacion" ColumnName="idOperacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDepartamento">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.TipoDepartamento">
+              <MappingFragment StoreEntitySet="TipoDepartamento">
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nroDormitorios" ColumnName="nroDormitorios" />
+                <ScalarProperty Name="nroBanos" ColumnName="nroBanos" />
+                <ScalarProperty Name="areaDepar" ColumnName="areaDepar" />
+                <ScalarProperty Name="precMens" ColumnName="precMens" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visitante">
+            <EntityTypeMapping TypeName="DB_PIGrupo01Model.Visitante">
+              <MappingFragment StoreEntitySet="Visitante">
+                <ScalarProperty Name="idVisi" ColumnName="idVisi" />
+                <ScalarProperty Name="nomVisi" ColumnName="nomVisi" />
+                <ScalarProperty Name="apeVisi" ColumnName="apeVisi" />
+                <ScalarProperty Name="dniVisi" ColumnName="dniVisi" />
+                <ScalarProperty Name="movilVisi" ColumnName="movilVisi" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuReg" ColumnName="usuReg" />
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_DepartamentoActualizar" FunctionName="DB_PIGrupo01Model.Store.usp_DepartamentoActualizar" />
+          <FunctionImportMapping FunctionImportName="usp_DepartamentoDatos" FunctionName="DB_PIGrupo01Model.Store.usp_DepartamentoDatos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_DepartamentoDatos_Result">
+                <ScalarProperty Name="idDepa" ColumnName="idDepa" />
+                <ScalarProperty Name="nroPiso" ColumnName="nroPiso" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuReg" ColumnName="usuReg" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_DepartamentoEliminar" FunctionName="DB_PIGrupo01Model.Store.usp_DepartamentoEliminar" />
+          <FunctionImportMapping FunctionImportName="usp_DepartamentoInsertar" FunctionName="DB_PIGrupo01Model.Store.usp_DepartamentoInsertar" />
+          <FunctionImportMapping FunctionImportName="usp_DepartamentoListar" FunctionName="DB_PIGrupo01Model.Store.usp_DepartamentoListar" />
+          <FunctionImportMapping FunctionImportName="usp_EstadoListar" FunctionName="DB_PIGrupo01Model.Store.usp_EstadoListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_EstadoListar_Result">
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_MascotaActualizar" FunctionName="DB_PIGrupo01Model.Store.usp_MascotaActualizar" />
+          <FunctionImportMapping FunctionImportName="usp_MascotaDatos" FunctionName="DB_PIGrupo01Model.Store.usp_MascotaDatos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_MascotaDatos_Result">
+                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
+                <ScalarProperty Name="tipoMascota" ColumnName="tipoMascota" />
+                <ScalarProperty Name="nroMascota" ColumnName="nroMascota" />
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_MascotaEliminar" FunctionName="DB_PIGrupo01Model.Store.usp_MascotaEliminar" />
+          <FunctionImportMapping FunctionImportName="usp_MascotaInsertar" FunctionName="DB_PIGrupo01Model.Store.usp_MascotaInsertar" />
+          <FunctionImportMapping FunctionImportName="usp_PropietarioActualizar" FunctionName="DB_PIGrupo01Model.Store.usp_PropietarioActualizar" />
+          <FunctionImportMapping FunctionImportName="usp_PropietarioDatos" FunctionName="DB_PIGrupo01Model.Store.usp_PropietarioDatos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_PropietarioDatos_Result">
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+                <ScalarProperty Name="nomProp" ColumnName="nomProp" />
+                <ScalarProperty Name="apeProp" ColumnName="apeProp" />
+                <ScalarProperty Name="dniProp" ColumnName="dniProp" />
+                <ScalarProperty Name="correoProp" ColumnName="correoProp" />
+                <ScalarProperty Name="movilProp" ColumnName="movilProp" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuReg" ColumnName="usuReg" />
+                <ScalarProperty Name="idDepa" ColumnName="idDepa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_PropietarioEliminar" FunctionName="DB_PIGrupo01Model.Store.usp_PropietarioEliminar" />
+          <FunctionImportMapping FunctionImportName="usp_PropietarioInsertar" FunctionName="DB_PIGrupo01Model.Store.usp_PropietarioInsertar" />
+          <FunctionImportMapping FunctionImportName="usp_PropietarioListar" FunctionName="DB_PIGrupo01Model.Store.usp_PropietarioListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_PropietarioListar_Result">
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+                <ScalarProperty Name="apeProp" ColumnName="apeProp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_TipoDepartamentoListar" FunctionName="DB_PIGrupo01Model.Store.usp_TipoDepartamentoListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_TipoDepartamentoListar_Result">
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_VisitanteActualizar" FunctionName="DB_PIGrupo01Model.Store.usp_VisitanteActualizar" />
+          <FunctionImportMapping FunctionImportName="usp_VisitanteDatos" FunctionName="DB_PIGrupo01Model.Store.usp_VisitanteDatos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_VisitanteDatos_Result">
+                <ScalarProperty Name="idVisi" ColumnName="idVisi" />
+                <ScalarProperty Name="nomVisi" ColumnName="nomVisi" />
+                <ScalarProperty Name="apeVisi" ColumnName="apeVisi" />
+                <ScalarProperty Name="dniVisi" ColumnName="dniVisi" />
+                <ScalarProperty Name="movilVisi" ColumnName="movilVisi" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuReg" ColumnName="usuReg" />
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_VisitanteEliminar" FunctionName="DB_PIGrupo01Model.Store.usp_VisitanteEliminar" />
+          <FunctionImportMapping FunctionImportName="usp_VisitanteInsertar" FunctionName="DB_PIGrupo01Model.Store.usp_VisitanteInsertar" />
+          <FunctionImportMapping FunctionImportName="usp_MascotaListar" FunctionName="DB_PIGrupo01Model.Store.usp_MascotaListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_MascotaListar_Result">
+                <ScalarProperty Name="idMascota" ColumnName="idMascota" />
+                <ScalarProperty Name="tipoMascota" ColumnName="tipoMascota" />
+                <ScalarProperty Name="nroMascota" ColumnName="nroMascota" />
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_VisitanteListar" FunctionName="DB_PIGrupo01Model.Store.usp_VisitanteListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_PIGrupo01Model.usp_VisitanteListar_Result">
+                <ScalarProperty Name="idVisi" ColumnName="idVisi" />
+                <ScalarProperty Name="nomVisi" ColumnName="nomVisi" />
+                <ScalarProperty Name="apeVisi" ColumnName="apeVisi" />
+                <ScalarProperty Name="dniVisi" ColumnName="dniVisi" />
+                <ScalarProperty Name="movilVisi" ColumnName="movilVisi" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuReg" ColumnName="usuReg" />
+                <ScalarProperty Name="idProp" ColumnName="idProp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

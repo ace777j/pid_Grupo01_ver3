@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ProyectoDSWI.Entity.Mascota1>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">MAESTRO DE MASCOTAS</h2>
+
+<p>
+    @Html.ActionLink("Agregar Nueva Mascota", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idMascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoMascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nroMascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idProp)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr class="bg-danger">
+    <td>
+        @Html.DisplayFor(modelItem => item.idMascota)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tipoMascota)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nroMascota)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.idProp)
+    </td>
+    <td>
+        @Html.ActionLink("Actualizar", "Edit", new { id = item.idMascota }) |
+        @Html.ActionLink("Ver Detalles", "Details", new { id = item.idMascota }) |
+        @Html.ActionLink("Dar de Baja", "Delete", new { id = item.idMascota })
+    </td>
+</tr>
+    }
+
+</table>

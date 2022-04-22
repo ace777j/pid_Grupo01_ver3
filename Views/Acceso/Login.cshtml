@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayaoutLogin.cshtml";
+}
+
+<h2 style="text-align:center; color:white" >Login</h2>
+<div class="row">
+    <div class="danger">
+        @ViewBag.Error
+    </div>
+    <form action="@Url.Content("/Acceso/Login")" method="post">
+        <div style="text-align:center" class=" form-group">
+            <label style="color:white">Usuario</label>
+            <input type="email" name="User" />
+        </div>
+        <div style="text-align:center" class=" form-group">
+            <label style="color:white">Contraseña</label>
+            <input type="password" name="Pass" />
+        </div>
+        <div style="text-align:center" class=" form-group">
+            <input type="submit" value="Entrar" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+
+<script>window.watsonAssistantChatOptions = {
+        integrationID: "030a7e40-0bc7-4f90-ab60-d115334bf9b9", // The ID of this integration.
+        region: "au-syd", // The region your integration is hosted in.
+        serviceInstanceID: "f44b4051-b68a-4bc4-86b5-c545b1a9e19a", // The ID of your service instance.
+        onLoad: function (instance) { instance.render(); }
+    };
+    setTimeout(function () {
+        const t = document.createElement('script');
+        t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js"
+        document.head.appendChild(t);
+    });</script>
+

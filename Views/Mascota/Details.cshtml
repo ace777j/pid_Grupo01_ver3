@@ -1,0 +1,50 @@
+﻿@model ProyectoDSWI.Entity.Mascota1
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mascota</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nroMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nroMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idProp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idProp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

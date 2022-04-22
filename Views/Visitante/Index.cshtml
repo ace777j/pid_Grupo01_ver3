@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProyectoDSWI.Entity.Visitante1>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">MAESTRO DE VISITANTES</h2>
+
+<p>
+    @Html.ActionLink("Agregar Nuevo Visitante", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idVisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomVisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apeVisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dniVisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.movilVisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuReg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idProp)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr class="bg-danger">
+    <td>
+        @Html.DisplayFor(modelItem => item.idVisi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nomVisi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.apeVisi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dniVisi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.movilVisi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fechaRegistro)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.usuReg)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.idProp)
+    </td>
+    <td>
+        @Html.ActionLink("Actualizar", "Edit", new { id = item.idVisi }) |
+        @Html.ActionLink("Ver Detalles", "Details", new { id = item.idVisi }) |
+        @Html.ActionLink("Dar de Baja", "Delete", new { id = item.idVisi })
+    </td>
+</tr>
+    }
+
+</table>

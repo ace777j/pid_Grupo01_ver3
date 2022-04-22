@@ -1,0 +1,56 @@
+﻿@model ProyectoDSWI.Entity.Mascota1
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="text-center">CONFIRMACIÓN DE BAJA DE MASCOTA</h2>
+
+<h3 class="text-center">Está seguro de dar de baja a la Mascota => @Model.idMascota</h3>
+<div>
+    <h4 class="text-center">Datos de la Mascota</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nroMascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nroMascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idProp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idProp)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Dar de baja" class="btn btn-danger" /> |
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    }
+</div>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42ccbafe0ea442bf9d9b09a63b151365" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.Departamento" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.Estado" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.Mascota" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.modulo" Width="1.5" PointX="1.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.operaciones" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.Propietario" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.rol" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.rol_operacion" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.TipoDepartamento" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.usuario" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_PIGrupo01Model.Visitante" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK__Departame__idEst__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK__Departame__idTip__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK__Propietar__idDep__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK__Mascota__idProp__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK_operaciones_modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK_rol_operacion_operaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK__Visitante__idPro__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK_rol_operacion_rol" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_PIGrupo01Model.FK_usuario_rol" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
