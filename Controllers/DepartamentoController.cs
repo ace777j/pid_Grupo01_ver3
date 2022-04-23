@@ -26,6 +26,7 @@ namespace ProyectoDSWI.Controllers
             return View(db.Departamento.ToList().OrderBy(x => x.idDepa));
         }*/
 
+
         SqlConnection cn = new SqlConnection(
                 ConfigurationManager.ConnectionStrings["DB_PIGrupo011"].ConnectionString);
         // GET: Departamento
