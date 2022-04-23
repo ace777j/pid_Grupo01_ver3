@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.nroMascota)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.idProp)
+            <h4 class="text-center">Propietario</h4>
         </th>
         <th></th>
     </tr>
@@ -40,7 +40,10 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.idProp)
+        @Html.DisplayFor(modelItem => item.nomProp)
     </td>
+    
+    
     <td>
         @Html.ActionLink("Actualizar", "Edit", new { id = item.idMascota }) |
         @Html.ActionLink("Ver Detalles", "Details", new { id = item.idMascota }) |
