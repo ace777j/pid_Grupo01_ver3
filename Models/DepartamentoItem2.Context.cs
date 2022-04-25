@@ -86,15 +86,11 @@ namespace ProyectoPidG01.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DepartamentoEliminar", idDepaParameter);
         }
     
-        public virtual int usp_DepartamentoInsertar(string nroPiso, Nullable<System.DateTime> fechaRegistro, string usuReg, Nullable<int> idEstado, Nullable<int> idTipo)
+        public virtual int usp_DepartamentoInsertar(string nroPiso, string usuReg, Nullable<int> idEstado, Nullable<int> idTipo)
         {
             var nroPisoParameter = nroPiso != null ?
                 new ObjectParameter("nroPiso", nroPiso) :
                 new ObjectParameter("nroPiso", typeof(string));
-    
-            var fechaRegistroParameter = fechaRegistro.HasValue ?
-                new ObjectParameter("fechaRegistro", fechaRegistro) :
-                new ObjectParameter("fechaRegistro", typeof(System.DateTime));
     
             var usuRegParameter = usuReg != null ?
                 new ObjectParameter("usuReg", usuReg) :
@@ -108,7 +104,7 @@ namespace ProyectoPidG01.Models
                 new ObjectParameter("idTipo", idTipo) :
                 new ObjectParameter("idTipo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DepartamentoInsertar", nroPisoParameter, fechaRegistroParameter, usuRegParameter, idEstadoParameter, idTipoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DepartamentoInsertar", nroPisoParameter, usuRegParameter, idEstadoParameter, idTipoParameter);
         }
     
         public virtual ObjectResult<usp_DepartamentoListar_Result> usp_DepartamentoListar()
@@ -241,7 +237,7 @@ namespace ProyectoPidG01.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_PropietarioEliminar", idPropParameter);
         }
     
-        public virtual int usp_PropietarioInsertar(string nomProp, string apeProp, string dniProp, string correoProp, string movilProp, Nullable<System.DateTime> fechaRegistro, string usuReg, Nullable<int> idDepa)
+        public virtual int usp_PropietarioInsertar(string nomProp, string apeProp, string dniProp, string correoProp, string movilProp, string usuReg, Nullable<int> idDepa)
         {
             var nomPropParameter = nomProp != null ?
                 new ObjectParameter("nomProp", nomProp) :
@@ -263,10 +259,6 @@ namespace ProyectoPidG01.Models
                 new ObjectParameter("movilProp", movilProp) :
                 new ObjectParameter("movilProp", typeof(string));
     
-            var fechaRegistroParameter = fechaRegistro.HasValue ?
-                new ObjectParameter("fechaRegistro", fechaRegistro) :
-                new ObjectParameter("fechaRegistro", typeof(System.DateTime));
-    
             var usuRegParameter = usuReg != null ?
                 new ObjectParameter("usuReg", usuReg) :
                 new ObjectParameter("usuReg", typeof(string));
@@ -275,7 +267,7 @@ namespace ProyectoPidG01.Models
                 new ObjectParameter("idDepa", idDepa) :
                 new ObjectParameter("idDepa", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_PropietarioInsertar", nomPropParameter, apePropParameter, dniPropParameter, correoPropParameter, movilPropParameter, fechaRegistroParameter, usuRegParameter, idDepaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_PropietarioInsertar", nomPropParameter, apePropParameter, dniPropParameter, correoPropParameter, movilPropParameter, usuRegParameter, idDepaParameter);
         }
     
         public virtual ObjectResult<usp_PropietarioListar_Result> usp_PropietarioListar()
@@ -343,7 +335,7 @@ namespace ProyectoPidG01.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_VisitanteEliminar", idVisiParameter);
         }
     
-        public virtual int usp_VisitanteInsertar(string nomVisi, string apeVisi, string dniVisi, string movilVisi, Nullable<System.DateTime> fechaRegistro, string usuReg, Nullable<int> idProp)
+        public virtual int usp_VisitanteInsertar(string nomVisi, string apeVisi, string dniVisi, string movilVisi, string usuReg, Nullable<int> idProp)
         {
             var nomVisiParameter = nomVisi != null ?
                 new ObjectParameter("nomVisi", nomVisi) :
@@ -361,10 +353,6 @@ namespace ProyectoPidG01.Models
                 new ObjectParameter("movilVisi", movilVisi) :
                 new ObjectParameter("movilVisi", typeof(string));
     
-            var fechaRegistroParameter = fechaRegistro.HasValue ?
-                new ObjectParameter("fechaRegistro", fechaRegistro) :
-                new ObjectParameter("fechaRegistro", typeof(System.DateTime));
-    
             var usuRegParameter = usuReg != null ?
                 new ObjectParameter("usuReg", usuReg) :
                 new ObjectParameter("usuReg", typeof(string));
@@ -373,12 +361,38 @@ namespace ProyectoPidG01.Models
                 new ObjectParameter("idProp", idProp) :
                 new ObjectParameter("idProp", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_VisitanteInsertar", nomVisiParameter, apeVisiParameter, dniVisiParameter, movilVisiParameter, fechaRegistroParameter, usuRegParameter, idPropParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_VisitanteInsertar", nomVisiParameter, apeVisiParameter, dniVisiParameter, movilVisiParameter, usuRegParameter, idPropParameter);
         }
     
         public virtual ObjectResult<usp_VisitanteListar_Result> usp_VisitanteListar()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_VisitanteListar_Result>("usp_VisitanteListar");
+        }
+    
+        public virtual ObjectResult<usp_RolListar_Result> usp_RolListar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_RolListar_Result>("usp_RolListar");
+        }
+    
+        public virtual int usp_UsuarioInsertar(string nombre, string email, string password, Nullable<int> idRol)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var idRolParameter = idRol.HasValue ?
+                new ObjectParameter("idRol", idRol) :
+                new ObjectParameter("idRol", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UsuarioInsertar", nombreParameter, emailParameter, passwordParameter, idRolParameter);
         }
     }
 }
