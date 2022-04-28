@@ -1,4 +1,4 @@
-﻿@model ProyectoDSWI.Entity.Departamento1
+@model ProyectoDSWI.Entity.Departamento1
 
 @{
     ViewBag.Title = "Create";
@@ -14,7 +14,6 @@
         <h4 class="text-center">Altas de Departamentos</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
         <div class="form-group">
             @Html.LabelFor(model => model.nroPiso, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -47,7 +46,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                 <input class="btn btn-success" type="submit" value="Guardar Datos" />
+                <input class="btn btn-success" type="submit" value="Guardar Datos" />
             </div>
         </div>
     </div>
