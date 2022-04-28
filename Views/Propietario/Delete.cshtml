@@ -4,7 +4,7 @@
     ViewBag.Title = "Delete";
 }
 
-<h2 class="text-center">CONFIRMACIÓN DE BAJA DE PROPIETARIO</h2>
+<h2 class="text-center">CONFIRMACIÓN DE ELIMINAR DE PROPIETARIO</h2>
 
 <h3 class="text-center">Está seguro de dar de baja al Propietario => @Model.nomProp @Model.apeProp</h3>
 <div>
@@ -85,12 +85,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
-    <input type="submit" value="Dar de baja" class="btn btn-danger" /> |
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
     }
 </div>

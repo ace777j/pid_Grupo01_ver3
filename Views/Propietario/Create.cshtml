@@ -1,5 +1,4 @@
-﻿@model ProyectoDSWI.Entity.Propietario1
-
+﻿@model  ProyectoDSWI.Entity.Propietario1
 @{
     ViewBag.Title = "Create";
 }
@@ -23,7 +22,7 @@
                 @Html.ValidationMessageFor(model => model.nomProp, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             @Html.LabelFor(model => model.apeProp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -31,7 +30,7 @@
                 @Html.ValidationMessageFor(model => model.apeProp, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             @Html.LabelFor(model => model.dniProp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -39,7 +38,7 @@
                 @Html.ValidationMessageFor(model => model.dniProp, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             @Html.LabelFor(model => model.correoProp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -47,7 +46,7 @@
                 @Html.ValidationMessageFor(model => model.correoProp, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             @Html.LabelFor(model => model.movilProp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -55,7 +54,7 @@
                 @Html.ValidationMessageFor(model => model.movilProp, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
 
 
         <div class="form-group">
@@ -66,7 +65,7 @@
             </div>
         </div>
 
-       
+        <br />
 
         <div class="form-group">
             @Html.LabelFor(model => model.idDepa, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -74,10 +73,10 @@
                 @Html.DropDownList("idDepa", (SelectList)ViewBag.departamentos, new { @class = "form-control" })
             </div>
         </div>
-
+        <br />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar Datos" class="btn btn-default" />
+                <input class="btn btn-success" type="submit" value="Guardar Datos" />
             </div>
         </div>
     </div>
@@ -94,9 +93,5 @@
 </script>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -43,7 +43,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar Datos" class="btn btn-default" />
+                <input class="btn btn-success" type="submit" value="Guardar Datos" />
             </div>
         </div>
     </div>
@@ -60,9 +60,6 @@
 </script>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

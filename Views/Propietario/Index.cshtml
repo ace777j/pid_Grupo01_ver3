@@ -7,76 +7,62 @@
 <h2 class="text-center">MAESTRO DE PROPIETARIOS</h2>
 
 <p>
-    @Html.ActionLink("Agregar Nuevo Propietario", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Nuevo Propietario", "Create", null, new { @class = "btn btn-success" })
 </p>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idProp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nomProp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.apeProp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dniProp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.correoProp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.movilProp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaRegistro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.usuReg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idDepa)
-        </th>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Correo</th>
+        <th>Movil</th>
+        <th>Fecha Registro</th>
+        <th>Usuario</th>
+        <th>Depa</th>
+        <th style="text-align:center">Mantenimiento</th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-<tr class="bg-danger">
-    <td>
-        @Html.DisplayFor(modelItem => item.idProp)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.nomProp)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.apeProp)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.dniProp)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.correoProp)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.movilProp)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.fechaRegistro)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.usuReg)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.idDepa)
-    </td>
-    <td>
-        @Html.ActionLink("Actualizar", "Edit", new { id = item.idProp }) |
-        @Html.ActionLink("Ver Detalles", "Details", new { id = item.idProp }) |
-        @Html.ActionLink("Dar de Baja", "Delete", new { id = item.idProp })
-    </td>
-</tr>
+        <tr style="background-color:white">
+            <td>
+                @Html.DisplayFor(modelItem => item.idProp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomProp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apeProp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dniProp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correoProp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.movilProp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuReg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idDepa)
+            </td>
+            <td>
+                <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Propietario/Edit?id=@item.idProp'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
+                <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='Propietario/Delete?id=@item.idProp'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
+
+                @*@Html.ActionLink("Actualizar", "Edit", new { id = item.idProp }) |*@
+                @*@Html.ActionLink("Ver Detalles", "Details", new { id = item.idProp }) |*@
+                @*@Html.ActionLink("Eliminar", "Delete", new { id = item.idProp })*@
+            </td>
+        </tr>
     }
 
 </table>
