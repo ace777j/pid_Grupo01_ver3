@@ -1,53 +1,125 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <!--principal-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>@ViewBag.Title|Proyecto!</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="~/Vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Vendor/nprogress/nprogress.css" rel="stylesheet" />
+    <link href="~/Content/css/custom.min.css" rel="stylesheet" />
 </head>
 
-@*<body style=" background-image: url(../../Imagenes/PC-piezas.jpg)">*@
-<body background: class="bg-image" style="background-image: url('https://st.depositphotos.com/2784805/4936/i/950/depositphotos_49360739-stock-photo-orange-technology-background.jpg'); height: 100vh ">
-    @*<img background: class="bg-image" style="background-image: url('https://images.staticjw.com/asc/1566/banner-computadoras.jpg'); height: 40vh ">
-        </img>*@
-    <img src="https://icasa.pe/wp-content/uploads/2021/12/comprar_un_departamento_o_alquilar.png"; style="height: 40vh; width:172vh"/>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="@Url.Action("Index","Home")" class="site_title"><i class="fa fa-building-o"></i> <span>Proyecto</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info  -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+
+                            <img src="~/Content/images/img.png" alt="Usuario" class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Bienvenido</span>
+                            <h2>Admin</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>ADMINISTRACIÓN</h3>
+                            <ul class="nav side-menu">
+                                <li><a href="@Url.Action("Create", "Usuario")"><i class="fa fa-user-plus"></i> Nuevo Usuario<span class="label label-success pull-right"></span></a></li>
+                                <li>
+                                    <a><i class="fa fa-list-alt"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="@Url.Action( "Index", "Departamento")">Departamento</a></li>
+                                        <li><a href="@Url.Action( "Index", "Mascota")">Mascota</a></li>
+                                        <li><a href="@Url.Action( "Index", "Visitante")">Visitante</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="@Url.Action("Index", "Propietario")"><i class="fa fa-users"></i> Propietario<span class="label label-success pull-right"></span></a></li>
+
+                                <li>
+                                    <a><i class="fa fa-file-o"></i> Reporte <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="form.html">Reporte Servicio</a></li>
+                                        <li><a href="form.html">Repostre Pagos</a></li>
+                                        <li><a href="form.html">Reporte Cliente</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- sidebar menu -->
+                    <!-- menu footer buttons -->
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("NUEVO USUARIO", "Create", "Usuario")</li>
-                    <li>@Html.ActionLink("DEPARTAMENTOS", "Index", "Departamento")</li>
-                    <li>@Html.ActionLink("PROPIETARIOS", "Index", "Propietario")</li>
-                    <li>@Html.ActionLink("MASCOTAS", "Index", "Mascota")</li>
-                    <li>@Html.ActionLink("VISITANTES", "Index", "Visitante")</li>
-                    <li>@Html.ActionLink("CERRAR SESION", "Login", "Acceso")</li>
-                </ul>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <nav class="nav navbar-nav">
+                        <ul class=" navbar-right">
+                            <li class="nav-item dropdown open" style="padding-left: 15px;">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/Content/images/img.png" alt="">Admin
+                                </a>
+                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="javascript:;"> Perfil</a>
+                                    <a class="dropdown-item" href="@Url.Action("Login", "Acceso")"><i class="fa fa-sign-out pull-right"></i> Login</a>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </nav>
+                </div>
             </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- Scripts -->
+    <script src="~/Vendor/jquery/dist/jquery.min.js"></script>
+    <script src="~/Vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Vendor/nprogress/nprogress.js"></script>
+    <!--<script src="~/Content/js/custom.min.js"></script>-->
+    <script src="~/Content/js/custom.js"></script>
 </body>
 </html>

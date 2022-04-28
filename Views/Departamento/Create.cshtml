@@ -15,7 +15,6 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
-
         <div class="form-group">
             @Html.LabelFor(model => model.nroPiso, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -23,8 +22,6 @@
                 @Html.ValidationMessageFor(model => model.nroPiso, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        
 
         <div class="form-group">
             @Html.LabelFor(model => model.usuReg, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -34,14 +31,12 @@
             </div>
         </div>
 
-
         <div class="form-group">
             @Html.LabelFor(model => model.idEstado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idEstado", (SelectList)ViewBag.estados, new { @class = "form-control" })
             </div>
         </div>
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.idTipo, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -52,7 +47,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar Datos" class="btn btn-default" />
+                 <input class="btn btn-success" type="submit" value="Guardar Datos" />
             </div>
         </div>
     </div>
@@ -69,9 +64,5 @@
 </script>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("REGRESAR", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

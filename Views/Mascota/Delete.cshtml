@@ -45,12 +45,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm()) 
+    {
         @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
-    <input type="submit" value="Dar de baja" class="btn btn-danger" /> |
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Dar de baja" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
     }
 </div>
