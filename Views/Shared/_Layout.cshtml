@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
     <title>@ViewBag.Title|Proyecto!</title>
 
     <!-- Bootstrap core CSS -->
@@ -16,9 +15,8 @@
     <link href="~/Vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Vendor/nprogress/nprogress.css" rel="stylesheet" />
     <link href="~/Content/css/custom.min.css" rel="stylesheet" />
-
-
 </head>
+  
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
@@ -49,6 +47,7 @@
                         <div class="menu_section">
                             <h3>ADMINISTRACIÓN</h3>
                             <ul class="nav side-menu">
+                                <li><a href="@Url.Action("Create", "Usuario")"><i class="fa fa-user-plus"></i> Nuevo Usuario<span class="label label-success pull-right"></span></a></li>
                                 <li>
                                     <a><i class="fa fa-list-alt"></i> Mantenimiento <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -70,7 +69,6 @@
 
                             </ul>
                         </div>
-
                     </div>
                     <!-- sidebar menu -->
                     <!-- menu footer buttons -->

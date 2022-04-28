@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProyectoDSWI.Entity.Mascota1>
+@model IEnumerable<ProyectoDSWI.Entity.Mascota1>
 
 @{
     ViewBag.Title = "Index";
@@ -11,19 +11,11 @@
 </p>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idMascota)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipoMascota)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nroMascota)
-        </th>
-        <th>
-            <h4 class="text-center">Propietario</h4>
-        </th>
-        <th></th>
+        <th>Código</th>
+        <th>Tipo</th>
+        <th>Cantidad</th>
+        <th>Propietario</th>
+        <th style="text-align:center">Mantenimiento</th>
     </tr>
 
     @foreach (var item in Model)
@@ -44,10 +36,6 @@
             <td>
                 <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Mascota/Edit?id=@item.idMascota'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
                 <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='Mascota/Delete?id=@item.idMascota'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
-                @*
-                    @Html.ActionLink("Actualizar", "Edit", new { id = item.idMascota }) |
-                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.idMascota }) |
-                    @Html.ActionLink("Dar de Baja", "Delete", new { id = item.idMascota })*@
             </td>
         </tr>
     }

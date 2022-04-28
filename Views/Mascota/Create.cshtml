@@ -15,7 +15,6 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
         <div class="form-group">
             @Html.LabelFor(model => model.tipoMascota, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -31,8 +30,6 @@
                 @Html.ValidationMessageFor(model => model.nroMascota, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.idProp, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -62,4 +59,3 @@
 <div>
     @Html.ActionLink("Regresar", "Index")
 </div>
-

@@ -21,7 +21,6 @@
         <th>Usuario</th>
         <th>Depa</th>
         <th style="text-align:center">Mantenimiento</th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -57,10 +56,6 @@
             <td>
                 <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Propietario/Edit?id=@item.idProp'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
                 <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='Propietario/Delete?id=@item.idProp'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
-
-                @*@Html.ActionLink("Actualizar", "Edit", new { id = item.idProp }) |*@
-                @*@Html.ActionLink("Ver Detalles", "Details", new { id = item.idProp }) |*@
-                @*@Html.ActionLink("Eliminar", "Delete", new { id = item.idProp })*@
             </td>
         </tr>
     }
