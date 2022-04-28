@@ -45,8 +45,6 @@ namespace ProyectoDSWI.Controllers
                     nroMascota = dr.GetString(2),
 
                     idProp = dr.GetInt32(3),
-
-                    nomProp = dr.GetString(4)
                 };
                 temporal.Add(reg);
             }
@@ -69,7 +67,7 @@ namespace ProyectoDSWI.Controllers
                 {
                     idProp = dr.GetInt32(0),
 
-                    nomProp = dr.GetString(1)
+                    nomProp=dr.GetString(1)
                 };
                 temporal.Add(reg);
             }
