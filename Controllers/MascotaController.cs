@@ -45,6 +45,9 @@ namespace ProyectoDSWI.Controllers
                     nroMascota = dr.GetString(2),
 
                     idProp = dr.GetInt32(3),
+
+                    nomProp = dr.GetString(4),
+                    apeProp= dr.GetString(5)
                 };
                 temporal.Add(reg);
             }
@@ -64,12 +67,8 @@ namespace ProyectoDSWI.Controllers
                 Propietario1 reg = new Propietario1
                 {
                     idProp = dr.GetInt32(0),
-<<<<<<< HEAD
-                    apeProp = dr.GetString(1)
-=======
-
-                    nomProp=dr.GetString(1)
->>>>>>> 800eee3bf849d02590292c8e2ff58216055c3d06
+                    nomProp=dr.GetString(1),
+                    apeProp = dr.GetString(2)
                 };
                 temporal.Add(reg);
             }
@@ -90,12 +89,8 @@ namespace ProyectoDSWI.Controllers
 
         public ActionResult Create()
         {
-<<<<<<< HEAD
-            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp");
-=======
 
-            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "nomProp");
->>>>>>> 800eee3bf849d02590292c8e2ff58216055c3d06
+            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp");
             return View(new Mascota1());
         }
 
@@ -120,7 +115,7 @@ namespace ProyectoDSWI.Controllers
                 cmd.Parameters.AddWithValue("@idProp", reg.idProp);
                 int q = cmd.ExecuteNonQuery();
                 tr.Commit();
-                ViewBag.mensaje = q.ToString() + " Mascota Agregada";
+                ViewBag.mensaje = q.ToString() + " Mascota Agregada Correctamente";
             }
             catch (SqlException ex)
             {
@@ -133,11 +128,8 @@ namespace ProyectoDSWI.Controllers
             }
 
 
-<<<<<<< HEAD
+
             ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp", reg.idProp);
-=======
-            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "nomProp", reg.idProp);
->>>>>>> 800eee3bf849d02590292c8e2ff58216055c3d06
             return View(reg);
         }
 

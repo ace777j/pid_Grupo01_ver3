@@ -12,8 +12,8 @@
 <table class="table table-bordered table-striped">
     <tr>
         <th>Código</th>
-        <th>Tipo</th>
-        <th>Cantidad</th>
+        <th>Tipo Mascota</th>
+        <th>Número Mascota</th>
         <th>Propietario</th>
         <th style="text-align:center">Mantenimiento</th>
     </tr>
@@ -31,7 +31,9 @@
                 @Html.DisplayFor(modelItem => item.nroMascota)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idProp)
+                @* @Html.DisplayFor(modelItem => item.idProp)*@
+                @Html.DisplayFor(modelItem => item.nomProp)
+                @Html.DisplayFor(modelItem => item.apeProp)
             </td>
             <td>
                 <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Mascota/Edit?id=@item.idMascota'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>

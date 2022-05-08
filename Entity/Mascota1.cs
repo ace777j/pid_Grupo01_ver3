@@ -26,6 +26,7 @@ namespace ProyectoDSWI.Entity
         [DisplayName("Propietario")]
         public int idProp { get; set; }
         public string nomProp { get; set; }
+        public string apeProp { get; set; }
     }
 }
 

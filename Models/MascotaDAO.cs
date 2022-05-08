@@ -128,6 +128,7 @@ namespace ProyectoDSWI.Models
                         nroMascota = dr[2].ToString(),
                         idProp = Convert.ToInt32(dr[3]),
                         nomProp = dr[4].ToString(),
+                        apeProp= dr[5].ToString()
                     };
                     lista.Add(reg);
                 }
