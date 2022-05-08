@@ -11,5 +11,7 @@ namespace ProyectoDSWI.Entity
         public string tipoMascota { get; set; }
         public string nroMascota { get; set; }
         public int idProp { get; set; }
+        public string nomProp { get; set; }
+        public string apeProp { get; set; }
     }
 }

@@ -11,25 +11,13 @@
 </p>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idDepa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nroPiso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaRegistro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.usuReg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idEstado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idTipo)
-        </th>
-        <th></th>
+        <th>Código</th>
+        <th>Piso</th>
+        <th>Fecha Registro</th>
+        <th>Usuario</th>
+        <th>Esatdo</th>
+        <th>Tipo Departamento</th>
+        <th style="text-align:center">Mantenimiento</th>
     </tr>
 
     @foreach (var item in Model)
@@ -48,10 +36,14 @@
                 @Html.DisplayFor(modelItem => item.usuReg)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idEstado)
+                @*@Html.DisplayFor(modelItem => item.idEstado)*@
+                @Html.DisplayFor(modelItem => item.descripcion)
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idTipo)
+                @*@Html.DisplayFor(modelItem => item.idTipo)*@
+             
+                @Html.DisplayFor(modelItem => item.tipdescripcion)
             </td>
             <td>
                 <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Departamento/Edit?id=@item.idDepa'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>

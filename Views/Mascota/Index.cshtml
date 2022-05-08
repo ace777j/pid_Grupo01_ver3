@@ -11,19 +11,12 @@
 </p>
 <table class="table table-bordered table-striped">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idMascota)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipoMascota)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nroMascota)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idProp)
-        </th>
-        <th></th>
+        <th>Código</th>
+        <th>Tipo Mascota</th>
+        <th>Número Mascota</th>
+        <th>Propietario</th>
+        
+        <th style="text-align:center">Mantenimiento</th>
     </tr>
 
     @foreach (var item in Model)
@@ -39,7 +32,9 @@
                 @Html.DisplayFor(modelItem => item.nroMascota)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idProp)
+                @* @Html.DisplayFor(modelItem => item.idProp)*@
+                @Html.DisplayFor(modelItem => item.nomProp)
+                @Html.DisplayFor(modelItem => item.apeProp)
             </td>
             <td>
                 <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Mascota/Edit?id=@item.idMascota'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>

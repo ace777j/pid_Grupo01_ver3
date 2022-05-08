@@ -134,7 +134,9 @@ namespace ProyectoDSWI.Models
                         fechaRegistro = Convert.ToDateTime(dr[2]),
                         usuReg = dr[3].ToString(),
                         idEstado = Convert.ToInt32(dr[4]),
-                        idTipo = Convert.ToInt32(dr[5])
+                        idTipo = Convert.ToInt32(dr[5]),
+                         descripcion = dr[6].ToString(),
+                        tipdescripcion  = dr[7].ToString()
                     };
                     lista.Add(reg);
                 }

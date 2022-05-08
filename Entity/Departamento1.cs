@@ -12,6 +12,8 @@ namespace ProyectoDSWI.Entity
         public DateTime fechaRegistro { get; set; }
         public string usuReg { get; set; }
         public int idEstado { get; set; }
+        public string descripcion { get; set; }
         public int idTipo { get; set; }
+        public string tipdescripcion { get; set; }
     }
 }
