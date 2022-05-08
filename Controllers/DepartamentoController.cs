@@ -20,12 +20,16 @@ namespace ProyectoDSWI.Controllers
     {
         private DB_PIGrupo01Entities1 db = new DB_PIGrupo01Entities1();
 
+<<<<<<< HEAD
+=======
         /*[AuthorizeUser(idOperacion: 5)]
         public ActionResult Index2()
         {
             return View(db.Departamento.ToList().OrderBy(x => x.idDepa));
         }*/
 
+
+>>>>>>> 800eee3bf849d02590292c8e2ff58216055c3d06
         SqlConnection cn = new SqlConnection(
                 ConfigurationManager.ConnectionStrings["DB_PIGrupo011"].ConnectionString);
         // GET: Departamento
@@ -50,7 +54,7 @@ namespace ProyectoDSWI.Controllers
 
                     fechaRegistro = dr.GetDateTime(2),
 
-                    usuReg = dr.GetString(3),
+                    usuReg = dr.GetInt32(3),
 
                     idEstado = dr.GetInt32(4),
 
@@ -140,6 +144,43 @@ namespace ProyectoDSWI.Controllers
 
         }
 
+        List<usuario> Usuarios()
+
+        {
+
+            List<usuario> temporal = new List<usuario>();
+
+            SqlCommand cmd = new SqlCommand("usp_UsuarioListar", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+
+            {
+
+                usuario reg = new usuario
+
+                {
+
+                    id = dr.GetInt32(0),
+
+                    nombre = dr.GetString(1)
+
+                };
+
+                temporal.Add(reg);
+
+            }
+
+            dr.Close(); cn.Close();
+
+            return temporal;
+
+        }
+
 
         [AuthorizeUser(idOperacion: 2)]
         public ActionResult Index()
@@ -156,6 +197,7 @@ namespace ProyectoDSWI.Controllers
         {
             ViewBag.estados = new SelectList(Estados(), "idEstado", "descripcion");
             ViewBag.tipodepartamentos = new SelectList(TipoDepartamentos(), "idTipo", "descripcion");
+            ViewBag.usuarios = new SelectList(Usuarios(), "id", "nombre");
             return View(new Departamento1());
         }
 
@@ -176,7 +218,6 @@ namespace ProyectoDSWI.Controllers
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@nroPiso", reg.nroPiso);
-                cmd.Parameters.AddWithValue("@fechaRegistro", DateTime.Now.ToString());
                 cmd.Parameters.AddWithValue("@usuReg", reg.usuReg);
                 cmd.Parameters.AddWithValue("@idEstado", reg.idEstado);
                 cmd.Parameters.AddWithValue("@idTipo", reg.idTipo);
@@ -196,6 +237,7 @@ namespace ProyectoDSWI.Controllers
 
             ViewBag.estados = new SelectList(Estados(), "idEstado", "descripcion", reg.idEstado);
             ViewBag.tipodepartamentos = new SelectList(TipoDepartamentos(), "idTipo", "descripcion", reg.idTipo);
+            ViewBag.usuarios = new SelectList(Usuarios(), "id", "nombre", reg.usuReg);
             return View(reg);
         }
 

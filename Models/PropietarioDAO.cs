@@ -24,8 +24,6 @@ namespace ProyectoDSWI.Models
             cmd.Parameters.AddWithValue("@dniProp", p.dniProp);
             cmd.Parameters.AddWithValue("@correoProp", p.correoProp);
             cmd.Parameters.AddWithValue("@movilProp", p.movilProp);
-            cmd.Parameters.AddWithValue("@fechaRegistro", p.fechaRegistro);
-            cmd.Parameters.AddWithValue("@usuReg", p.usuReg);
             cmd.Parameters.AddWithValue("@idDepa", p.idDepa);
 
             try
@@ -87,7 +85,7 @@ namespace ProyectoDSWI.Models
                         correoProp = dr[4].ToString(),
                         movilProp = dr[5].ToString(),
                         fechaRegistro = Convert.ToDateTime(dr[6]),
-                        usuReg = dr[7].ToString(),
+                        usuReg = Convert.ToInt32(dr[7]),
                         idDepa = Convert.ToInt32(dr[8])
                     };
                 }
@@ -111,7 +109,6 @@ namespace ProyectoDSWI.Models
             cmd.Parameters.AddWithValue("@dniProp", p.dniProp);
             cmd.Parameters.AddWithValue("@correoProp", p.correoProp);
             cmd.Parameters.AddWithValue("@movilProp", p.movilProp);
-            cmd.Parameters.AddWithValue("@fechaRegistro", p.fechaRegistro);
             cmd.Parameters.AddWithValue("@usuReg", p.usuReg);
             cmd.Parameters.AddWithValue("@idDepa", p.idDepa);
 
@@ -149,7 +146,7 @@ namespace ProyectoDSWI.Models
                         correoProp = dr[4].ToString(),
                         movilProp = dr[5].ToString(),
                         fechaRegistro = Convert.ToDateTime(dr[6]),
-                        usuReg = dr[7].ToString(),
+                        usuReg = Convert.ToInt32(dr[7]),
                         idDepa = Convert.ToInt32(dr[8])
                     };
                     lista.Add(reg);

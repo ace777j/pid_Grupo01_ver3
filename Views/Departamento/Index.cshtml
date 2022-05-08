@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProyectoDSWI.Entity.Departamento1>
+@model IEnumerable<ProyectoDSWI.Entity.Departamento1>
 
 @{
     ViewBag.Title = "Index";
@@ -8,6 +8,9 @@
 
 <p>
     @Html.ActionLink("Agregar Nuevo ", "Create", null, new { @class = "btn btn-success" })
+</p>
+<p>
+    <a href="@Url.Action( "Index", "TipoDepartamento")">Ver Tipos de Departamentos</a>
 </p>
 <table class="table table-bordered table-striped">
     <tr>
@@ -48,10 +51,7 @@
             <td>
                 <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Departamento/Edit?id=@item.idDepa'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
                 <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='Departamento/Delete?id=@item.idDepa'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
-                @*
-                    @Html.ActionLink("Actualizar", "Edit", new { id = item.idDepa }) |
-                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.idDepa }) |
-                    @Html.ActionLink("Dar de Baja", "Delete", new { id = item.idDepa })*@
+           
             </td>
         </tr>
     }

@@ -45,18 +45,15 @@ namespace ProyectoDSWI.Controllers
                     nroMascota = dr.GetString(2),
 
                     idProp = dr.GetInt32(3),
+
                     nomProp = dr.GetString(4),
                     apeProp= dr.GetString(5)
-
-                    
                 };
                 temporal.Add(reg);
             }
             dr.Close(); cn.Close();
             return temporal;
         }
-
-
 
         List<Propietario1> Propietarios()
         {
@@ -72,14 +69,12 @@ namespace ProyectoDSWI.Controllers
                     idProp = dr.GetInt32(0),
                     nomProp=dr.GetString(1),
                     apeProp = dr.GetString(2)
-
                 };
                 temporal.Add(reg);
             }
             dr.Close(); cn.Close();
             return temporal;
         }
-
 
         [AuthorizeUser(idOperacion: 2)]
         public ActionResult Index()
@@ -95,7 +90,7 @@ namespace ProyectoDSWI.Controllers
         public ActionResult Create()
         {
 
-            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "idProp");
+            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp");
             return View(new Mascota1());
         }
 
@@ -133,7 +128,8 @@ namespace ProyectoDSWI.Controllers
             }
 
 
-            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "idProp", reg.idProp);
+
+            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp", reg.idProp);
             return View(reg);
         }
 
@@ -141,7 +137,7 @@ namespace ProyectoDSWI.Controllers
         {
             Mascota1 reg = objmas.BuscarMascota(id);
             ViewBag.propietarios = new SelectList(objpro.ListarPropietarios(),
-                "idProp", "idProp", reg.idProp);
+                "idProp", "nomProp", reg.idProp);
             return View(objmas.BuscarMascota(id));
         }
 

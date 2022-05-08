@@ -11,7 +11,6 @@
 </p>
 <table class="table table-bordered table-striped">
     <tr>
-    <tr>
         <th>Código</th>
         <th>Nombre</th>
         <th>Apellido</th>
@@ -21,7 +20,6 @@
         <th>Usuario</th>
         <th>Departamento</th>
         <th style="text-align:center">Mantenimiento</th>
-   
     </tr>
 
     @foreach (var item in Model)
@@ -43,25 +41,13 @@
                 @Html.DisplayFor(modelItem => item.movilVisi)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fechaRegistro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.usuReg)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.idProp)
             </td>
             <td>
                 <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Visitante/Edit?id=@item.idVisi'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
                 <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='Visitante/Delete?id=@item.idVisi'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
-
-                @*
-         @Html.ActionLink("Actualizar", "Edit", new { id = item.idVisi }) |
-        | @Html.ActionLink("Ver Detalles", "Details", new { id = item.idVisi })
-         @Html.ActionLink("Dar de Baja", "Delete", new { id = item.idVisi })*@
             </td>
         </tr>
     }
 
 </table>
-

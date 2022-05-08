@@ -23,8 +23,6 @@ namespace ProyectoDSWI.Models
             cmd.Parameters.AddWithValue("@apeVisi", p.apeVisi);
             cmd.Parameters.AddWithValue("@dniVisi", p.dniVisi);
             cmd.Parameters.AddWithValue("@movilVisi", p.movilVisi);
-            cmd.Parameters.AddWithValue("@fechaRegistro", p.fechaRegistro);
-            cmd.Parameters.AddWithValue("@usuReg", p.usuReg);
             cmd.Parameters.AddWithValue("@idProp", p.idProp);
 
             try
@@ -81,8 +79,7 @@ namespace ProyectoDSWI.Models
                         dniVisi = dr[3].ToString(),
                         movilVisi = dr[4].ToString(),
                         fechaRegistro = Convert.ToDateTime(dr[5]),
-                        usuReg = dr[6].ToString(),
-                        idProp = Convert.ToInt32(dr[7])
+                        idProp = Convert.ToInt32(dr[6])
                     };
                 }
                 dr.Close();
@@ -101,12 +98,9 @@ namespace ProyectoDSWI.Models
             SqlCommand cmd = new SqlCommand("usp_VisitanteInsertar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@nomVisi", p.nomVisi);
-            cmd.Parameters.AddWithValue("@nomVisi", p.nomVisi);
             cmd.Parameters.AddWithValue("@apeVisi", p.apeVisi);
             cmd.Parameters.AddWithValue("@dniVisi", p.dniVisi);
             cmd.Parameters.AddWithValue("@movilVisi", p.movilVisi);
-            cmd.Parameters.AddWithValue("@fechaRegistro", p.fechaRegistro);
-            cmd.Parameters.AddWithValue("@usuReg", p.usuReg);
             cmd.Parameters.AddWithValue("@idProp", p.idProp);
 
             try
@@ -142,8 +136,7 @@ namespace ProyectoDSWI.Models
                         dniVisi = dr[3].ToString(),
                         movilVisi = dr[4].ToString(),
                         fechaRegistro = Convert.ToDateTime(dr[5]),
-                        usuReg = dr[6].ToString(),
-                        idProp = Convert.ToInt32(dr[7])
+                        idProp = Convert.ToInt32(dr[6])
                     };
                     lista.Add(reg);
                 }

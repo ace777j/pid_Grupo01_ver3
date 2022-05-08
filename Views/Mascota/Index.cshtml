@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProyectoDSWI.Entity.Mascota1>
+@model IEnumerable<ProyectoDSWI.Entity.Mascota1>
 
 @{
     ViewBag.Title = "Index";
@@ -15,7 +15,6 @@
         <th>Tipo Mascota</th>
         <th>Número Mascota</th>
         <th>Propietario</th>
-        
         <th style="text-align:center">Mantenimiento</th>
     </tr>
 
@@ -39,10 +38,6 @@
             <td>
                 <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Mascota/Edit?id=@item.idMascota'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
                 <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='Mascota/Delete?id=@item.idMascota'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
-                @*
-                    @Html.ActionLink("Actualizar", "Edit", new { id = item.idMascota }) |
-                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.idMascota }) |
-                    @Html.ActionLink("Dar de Baja", "Delete", new { id = item.idMascota })*@
             </td>
         </tr>
     }

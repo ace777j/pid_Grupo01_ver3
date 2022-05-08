@@ -1,4 +1,4 @@
-﻿@model ProyectoDSWI.Entity.Departamento1
+@model ProyectoDSWI.Entity.Departamento1
 
 @{
     ViewBag.Title = "Create";
@@ -14,8 +14,6 @@
         <h4 class="text-center">Altas de Departamentos</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
         <div class="form-group">
             @Html.LabelFor(model => model.nroPiso, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -24,16 +22,12 @@
             </div>
         </div>
 
-
-
         <div class="form-group">
             @Html.LabelFor(model => model.usuReg, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.usuReg, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.usuReg, "", new { @class = "text-danger" })
+                @Html.DropDownList("usuReg", (SelectList)ViewBag.usuarios, new { @class = "form-control" })
             </div>
         </div>
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.idEstado, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,7 +35,6 @@
                 @Html.DropDownList("idEstado", (SelectList)ViewBag.estados, new { @class = "form-control" })
             </div>
         </div>
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.idTipo, htmlAttributes: new { @class = "control-label col-md-2" })
