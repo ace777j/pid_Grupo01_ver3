@@ -52,8 +52,6 @@ namespace ProyectoDSWI.Controllers
             return temporal;
         }
 
-
-
         List<Propietario1> Propietarios()
         {
             List<Propietario1> temporal = new List<Propietario1>();
@@ -66,15 +64,18 @@ namespace ProyectoDSWI.Controllers
                 Propietario1 reg = new Propietario1
                 {
                     idProp = dr.GetInt32(0),
+<<<<<<< HEAD
+                    apeProp = dr.GetString(1)
+=======
 
                     nomProp=dr.GetString(1)
+>>>>>>> 800eee3bf849d02590292c8e2ff58216055c3d06
                 };
                 temporal.Add(reg);
             }
             dr.Close(); cn.Close();
             return temporal;
         }
-
 
         [AuthorizeUser(idOperacion: 2)]
         public ActionResult Index()
@@ -89,8 +90,12 @@ namespace ProyectoDSWI.Controllers
 
         public ActionResult Create()
         {
+<<<<<<< HEAD
+            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp");
+=======
 
             ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "nomProp");
+>>>>>>> 800eee3bf849d02590292c8e2ff58216055c3d06
             return View(new Mascota1());
         }
 
@@ -128,7 +133,11 @@ namespace ProyectoDSWI.Controllers
             }
 
 
+<<<<<<< HEAD
+            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp", reg.idProp);
+=======
             ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "nomProp", reg.idProp);
+>>>>>>> 800eee3bf849d02590292c8e2ff58216055c3d06
             return View(reg);
         }
 

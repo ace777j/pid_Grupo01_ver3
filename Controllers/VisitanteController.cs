@@ -49,17 +49,13 @@ namespace ProyectoDSWI.Controllers
 
                     fechaRegistro = dr.GetDateTime(5),
 
-                    usuReg = dr.GetString(6),
-
-                    idProp = dr.GetInt32(7)
+                    idProp = dr.GetInt32(6)
                 };
                 temporal.Add(reg);
             }
             dr.Close(); cn.Close();
             return temporal;
         }
-
-
 
         List<Propietario1> Propietarios()
         {
@@ -72,14 +68,14 @@ namespace ProyectoDSWI.Controllers
             {
                 Propietario1 reg = new Propietario1
                 {
-                    idProp = dr.GetInt32(0)
+                    idProp = dr.GetInt32(0),
+                    apeProp = dr.GetString(1)
                 };
                 temporal.Add(reg);
             }
             dr.Close(); cn.Close();
             return temporal;
         }
-
 
         [AuthorizeUser(idOperacion: 2)]
         public ActionResult Index()
@@ -94,8 +90,7 @@ namespace ProyectoDSWI.Controllers
 
         public ActionResult Create()
         {
-
-            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "idProp");
+            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp");
             return View(new Visitante1());
         }
 
@@ -119,8 +114,6 @@ namespace ProyectoDSWI.Controllers
                 cmd.Parameters.AddWithValue("@apeVisi", reg.apeVisi);
                 cmd.Parameters.AddWithValue("@dniVisi", reg.dniVisi);
                 cmd.Parameters.AddWithValue("@movilVisi", reg.movilVisi);
-                cmd.Parameters.AddWithValue("@fechaRegistro", DateTime.Now.ToString());
-                cmd.Parameters.AddWithValue("@usuReg", reg.usuReg);
                 cmd.Parameters.AddWithValue("@idProp", reg.idProp);
                 int q = cmd.ExecuteNonQuery();
                 tr.Commit();
@@ -136,7 +129,7 @@ namespace ProyectoDSWI.Controllers
                 cn.Close();
             }
            
-            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "idProp", reg.idProp);
+            ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp", reg.idProp);
             return View(reg);
         }
 
