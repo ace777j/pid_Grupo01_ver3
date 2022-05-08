@@ -51,7 +51,7 @@ namespace ProyectoDSWI.Controllers
 
                     fechaRegistro = dr.GetDateTime(6),
 
-                    usuReg = dr.GetString(7),
+                    usuReg = dr.GetInt32(7),
 
                     idDepa = dr.GetInt32(8)
                 };
@@ -60,8 +60,6 @@ namespace ProyectoDSWI.Controllers
             dr.Close(); cn.Close();
             return temporal;
         }
-
-       
 
         List<Departamento1> Departamentos()
 
@@ -99,6 +97,42 @@ namespace ProyectoDSWI.Controllers
 
         }
 
+        List<usuario> Usuarios()
+
+        {
+
+            List<usuario> temporal = new List<usuario>();
+
+            SqlCommand cmd = new SqlCommand("usp_UsuarioListar", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+
+            {
+
+                usuario reg = new usuario
+
+                {
+
+                    id = dr.GetInt32(0),
+
+                    nombre = dr.GetString(1)
+
+                };
+
+                temporal.Add(reg);
+
+            }
+
+            dr.Close(); cn.Close();
+
+            return temporal;
+
+        }
 
         [AuthorizeUser(idOperacion: 2)]
         public ActionResult Index()
@@ -113,8 +147,8 @@ namespace ProyectoDSWI.Controllers
 
         public ActionResult Create()
         {
-            
             ViewBag.departamentos = new SelectList(Departamentos(), "idDepa", "idDepa");
+            ViewBag.usuarios = new SelectList(Usuarios(), "id", "nombre");
             return View(new Propietario1());
         }
 
@@ -139,7 +173,6 @@ namespace ProyectoDSWI.Controllers
                 cmd.Parameters.AddWithValue("@dniProp", reg.dniProp);
                 cmd.Parameters.AddWithValue("@correoProp", reg.correoProp);
                 cmd.Parameters.AddWithValue("@movilProp", reg.movilProp);
-                cmd.Parameters.AddWithValue("@fechaRegistro", DateTime.Now.ToString());
                 cmd.Parameters.AddWithValue("@usuReg", reg.usuReg);
                 cmd.Parameters.AddWithValue("@idDepa", reg.idDepa);
                 int q = cmd.ExecuteNonQuery();
@@ -157,6 +190,7 @@ namespace ProyectoDSWI.Controllers
             }
 
             ViewBag.departamentos = new SelectList(Departamentos(), "idDepa", "idDepa", reg.idDepa);
+            ViewBag.usuarios = new SelectList(Usuarios(), "id", "nombre", reg.usuReg);
             return View(reg);
         }
 

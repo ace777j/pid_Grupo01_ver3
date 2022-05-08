@@ -20,8 +20,6 @@ namespace ProyectoDSWI.Models
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@idDepa", p.idDepa);
             cmd.Parameters.AddWithValue("@nroPiso", p.nroPiso);
-            cmd.Parameters.AddWithValue("@fechaRegistro", p.fechaRegistro);
-            cmd.Parameters.AddWithValue("@usuReg", p.usuReg);
             cmd.Parameters.AddWithValue("@idEstado", p.idEstado);
             cmd.Parameters.AddWithValue("@idTipo", p.idTipo);
 
@@ -76,7 +74,7 @@ namespace ProyectoDSWI.Models
                         idDepa = Convert.ToInt32(dr[0]),
                         nroPiso = dr[1].ToString(),
                         fechaRegistro = Convert.ToDateTime(dr[2]),
-                        usuReg = dr[3].ToString(),
+                        usuReg = Convert.ToInt32(dr[3]),
                         idEstado = Convert.ToInt32(dr[4]),
                         idTipo = Convert.ToInt32(dr[5])
                     };
@@ -97,7 +95,6 @@ namespace ProyectoDSWI.Models
             SqlCommand cmd = new SqlCommand("usp_DepartamentoInsertar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@nroPiso", p.nroPiso);
-            cmd.Parameters.AddWithValue("@fechaRegistro", p.fechaRegistro);
             cmd.Parameters.AddWithValue("@usuReg", p.usuReg);
             cmd.Parameters.AddWithValue("@idEstado", p.idEstado);
             cmd.Parameters.AddWithValue("@idTipo", p.idTipo);
@@ -132,7 +129,7 @@ namespace ProyectoDSWI.Models
                         idDepa = Convert.ToInt32(dr[0]),
                         nroPiso = dr[1].ToString(),
                         fechaRegistro = Convert.ToDateTime(dr[2]),
-                        usuReg = dr[3].ToString(),
+                        usuReg = Convert.ToInt32(dr[3]),
                         idEstado = Convert.ToInt32(dr[4]),
                         idTipo = Convert.ToInt32(dr[5])
                     };
