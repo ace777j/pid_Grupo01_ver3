@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ProyectoDSWI.Entity.PagoD1>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">PAGO DE DEPARTAMENTO</h2>
+
+<p>
+    @Html.ActionLink("Agregar Nuevo Pago ", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Código</th>
+        <th>Propietario</th>
+        <th>Tipo Departamento</th>
+        <th>Precio</th>
+        <th>Fecha de Pago</th>
+        <th>Fecha de Vencimiento</th>
+        <th style="text-align:center">Pago Departamento</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="background-color:white">
+            <td>
+                @Html.DisplayFor(modelItem => item.idPagoD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.propietario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaVencimiento)
+            </td>
+
+            <td>
+                <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='PagoD/Edit?id=@item.idPagoD'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
+                <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='PagoD/Delete?id=@item.idPagoD'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
+            </td>
+        </tr>
+    }
+
+</table>

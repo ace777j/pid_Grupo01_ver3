@@ -133,14 +133,19 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MascotaController.cs" />
+    <Compile Include="Controllers\PagoDController.cs" />
+    <Compile Include="Controllers\PagoSController.cs" />
     <Compile Include="Controllers\PropietarioController.cs" />
     <Compile Include="Controllers\VisitanteController.cs" />
     <Compile Include="DataBase\DBAccess.cs" />
     <Compile Include="Entity\Departamento1.cs" />
     <Compile Include="Entity\Estado1.cs" />
     <Compile Include="Entity\Mascota1.cs" />
+    <Compile Include="Entity\PagoD1.cs" />
+    <Compile Include="Entity\PagoS1.cs" />
     <Compile Include="Entity\Propietario1.cs" />
     <Compile Include="Entity\TipoDepartamento1.cs" />
+    <Compile Include="Entity\TipoServicio1.cs" />
     <Compile Include="Entity\Visitante1.cs" />
     <Compile Include="Filters\AuthorizeUser.cs" />
     <Compile Include="Filters\VerificarSession.cs" />
@@ -195,6 +200,8 @@
     <Compile Include="Models\operaciones.cs">
       <DependentUpon>DepartamentoItem2.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PagoDDAO.cs" />
+    <Compile Include="Models\PagoSDAO.cs" />
     <Compile Include="Models\Propietario.cs">
       <DependentUpon>DepartamentoItem2.tt</DependentUpon>
     </Compile>
@@ -209,6 +216,7 @@
       <DependentUpon>DepartamentoItem2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoDepartamentoDAO.cs" />
+    <Compile Include="Models\TipoServicioDAO.cs" />
     <Compile Include="Models\usp_DepartamentoDatos_Result.cs">
       <DependentUpon>DepartamentoItem2.tt</DependentUpon>
     </Compile>
@@ -250,8 +258,11 @@
     <Compile Include="Services\IDaoDepartamento.cs" />
     <Compile Include="Services\IDaoEstado.cs" />
     <Compile Include="Services\IDaoMascota.cs" />
+    <Compile Include="Services\IDaoPagoD.cs" />
+    <Compile Include="Services\IDaoPagoS.cs" />
     <Compile Include="Services\IDaoPropietario.cs" />
     <Compile Include="Services\IDaoTipoDepartamento.cs" />
+    <Compile Include="Services\IDaoTipoServicio.cs" />
     <Compile Include="Services\IDaoVisitante.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -353,6 +364,16 @@
     <Content Include="Views\Visitante\Create.cshtml" />
     <Content Include="Views\Visitante\Edit.cshtml" />
     <Content Include="Views\Visitante\Delete.cshtml" />
+    <Content Include="Views\PagoD\Index.cshtml" />
+    <Content Include="Views\PagoD\Details.cshtml" />
+    <Content Include="Views\PagoD\Create.cshtml" />
+    <Content Include="Views\PagoD\Edit.cshtml" />
+    <Content Include="Views\PagoD\Delete.cshtml" />
+    <Content Include="Views\PagoS\Index.cshtml" />
+    <Content Include="Views\PagoS\Details.cshtml" />
+    <Content Include="Views\PagoS\Create.cshtml" />
+    <Content Include="Views\PagoS\Edit.cshtml" />
+    <Content Include="Views\PagoS\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
