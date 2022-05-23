@@ -78,6 +78,12 @@
     </div>
 }
 
+<script>
+  if ('@ViewBag.mensaje' != "") {
+    alert('@ViewBag.mensaje')
+  }
+</script>
+
 <div>
     @Html.ActionLink("REGRESAR", "Index")
 </div>

@@ -46,6 +46,11 @@ namespace ProyectoDSWI.Controllers
 
                     fechaPago = dr.GetDateTime(4),
 
+                    propietario = dr.GetString(5),
+
+                    servicio = dr.GetString(6)
+
+
                 };
                 temporal.Add(reg);
             }
@@ -167,7 +172,7 @@ namespace ProyectoDSWI.Controllers
                 if (ModelState.IsValid)
                 {
                     objpagos.ActualizarPagoServicio(reg);
-                    return RedirectToAction("Index");
+                    ViewBag.mensaje = " Pago Servicio actualizado";
                 }
                 return RedirectToAction("Index");
             }
@@ -186,6 +191,7 @@ namespace ProyectoDSWI.Controllers
         {
             PagoS1 pro = objpagos.BuscarPagoServicio(id);
             objpagos.BajaPagoServicio(pro);
+            ViewBag.mensaje = " Pago Servicio eliminado";
             return RedirectToAction("Index");
         }
 
