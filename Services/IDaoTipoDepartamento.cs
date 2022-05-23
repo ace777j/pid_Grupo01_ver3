@@ -9,6 +9,5 @@ namespace ProyectoDSWI.Services
     interface IDaoTipoDepartamento<T>
     {
         List<T> ListarTipoDepartamentos();
-
     }
 }

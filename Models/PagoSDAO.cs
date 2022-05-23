@@ -145,7 +145,5 @@ namespace ProyectoDSWI.Models
             finally { cn.Close(); }
             return lista;
         }
-
-
     }
 }

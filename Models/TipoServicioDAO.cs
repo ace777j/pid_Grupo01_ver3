@@ -21,7 +21,6 @@ namespace ProyectoDSWI.Models
             cmd.CommandType = CommandType.StoredProcedure;
             try
             {
-
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -42,4 +41,5 @@ namespace ProyectoDSWI.Models
             return lista;
         }
     }
+
 }
