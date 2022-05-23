@@ -15,5 +15,4 @@ namespace ProyectoDSWI.Services
         List<T> ListarPagoDepartamento();
         T BuscarPagoDepartamento(int id);
     }
-
 }
