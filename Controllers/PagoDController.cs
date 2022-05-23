@@ -47,6 +47,9 @@ namespace ProyectoDSWI.Entity
 
                     fechaVencimiento = dr.GetDateTime(5),
 
+                    propietario = dr.GetString(6),
+
+                    departamento = dr.GetString(7)
                 };
                 temporal.Add(reg);
             }

@@ -1,48 +1,61 @@
-﻿@model IEnumerable<ProyectoDSWI.Entity.PagoS1>
+﻿@model IEnumerable<ProyectoDSWI.Entity.Propietario1>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2 class="text-center">PAGO DE SERVICIO</h2>
+<h2 class="text-center">MAESTRO DE PROPIETARIOS</h2>
 
 <p>
-    @Html.ActionLink("Agregar Nuevo Pago", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Nuevo Propietario", "Create", null, new { @class = "btn btn-success" })
 </p>
 <table class="table table-bordered table-striped">
     <tr>
         <th>Código</th>
-        <th>Propietario</th>
-        <th>Tipo Servicio</th>
-        <th>Precio</th>
-        <th>Fecha de Pago</th>
-        <th style="text-align:center">Pago Servicio</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Correo</th>
+        <th>Movil</th>
+        <th>Fecha Registro</th>
+        <th>Usuario</th>
+        <th>Depa</th>
+        <th style="text-align:center">Mantenimiento</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr style="background-color:white">
             <td>
-                @Html.DisplayFor(modelItem => item.idPagoS)
+                @Html.DisplayFor(modelItem => item.idProp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.propietario)
+                @Html.DisplayFor(modelItem => item.nomProp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.servicio)
+                @Html.DisplayFor(modelItem => item.apeProp)
             </td>
-
             <td>
-                @Html.DisplayFor(modelItem => item.precio)
+                @Html.DisplayFor(modelItem => item.dniProp)
             </td>
-
             <td>
-                @Html.DisplayFor(modelItem => item.fechaPago)
+                @Html.DisplayFor(modelItem => item.correoProp)
             </td>
-
             <td>
-                <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='PagoS/Edit?id=@item.idPagoS'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
-                <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='PagoS/Delete?id=@item.idPagoS'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
+                @Html.DisplayFor(modelItem => item.movilProp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usuReg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idDepa)
+            </td>
+            <td>
+                <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href='Propietario/Edit?id=@item.idProp'"><span class="glyphicon glyphicon-edit">Actualiza</span></button>
+                <button class="btn btn-danger btn-sm" type="button" id="btn_act" onclick="location.href='Propietario/Delete?id=@item.idProp'"><span class="glyphicon glyphicon-trash">Elimina</span></button>
             </td>
         </tr>
     }

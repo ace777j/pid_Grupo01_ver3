@@ -19,8 +19,8 @@ namespace ProyectoDSWI.Models
             SqlCommand cmd = new SqlCommand("usp_PagoDActualizar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@idPagoD", p.idPagoD);
-            cmd.Parameters.AddWithValue("@propietario", p.propietario);
-            cmd.Parameters.AddWithValue("@departamento", p.departamento);
+            cmd.Parameters.AddWithValue("@idProp", p.idProp);
+            cmd.Parameters.AddWithValue("@idTipo", p.idTipo);
             cmd.Parameters.AddWithValue("@precio", p.precio);
             cmd.Parameters.AddWithValue("@fechaPago", p.fechaPago);
             cmd.Parameters.AddWithValue("@fechaVencimiento", p.fechaVencimiento);
@@ -97,8 +97,8 @@ namespace ProyectoDSWI.Models
             SqlCommand cmd = new SqlCommand("usp_PagoDInsertar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@idPagoD", p.idPagoD);
-            cmd.Parameters.AddWithValue("@propietario", p.propietario);
-            cmd.Parameters.AddWithValue("@departamento", p.departamento);
+            cmd.Parameters.AddWithValue("@idProp", p.idProp);
+            cmd.Parameters.AddWithValue("@idTipo", p.idTipo);
             cmd.Parameters.AddWithValue("@precio", p.precio);
             cmd.Parameters.AddWithValue("@fechaPago", p.fechaPago);
             cmd.Parameters.AddWithValue("@fechaVencimiento", p.fechaVencimiento);
@@ -129,8 +129,8 @@ namespace ProyectoDSWI.Models
                     PagoD1 reg = new PagoD1()
                     {
                         idPagoD = Convert.ToInt32(dr[0].ToString()),
-                        propietario = dr[1].ToString(),
-                        departamento = dr[2].ToString(),
+                        propietario = dr[6].ToString(),
+                        departamento = dr[7].ToString(),
                         precio = Convert.ToDecimal(dr[3].ToString()),
                         fechaPago = Convert.ToDateTime(dr[4].ToString()),
                         fechaVencimiento = Convert.ToDateTime(dr[5].ToString())

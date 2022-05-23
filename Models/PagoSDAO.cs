@@ -19,8 +19,8 @@ namespace ProyectoDSWI.Models
             SqlCommand cmd = new SqlCommand("usp_PagoSActualizar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@idPagoS", p.idPagoS);
-            cmd.Parameters.AddWithValue("@propietario", p.propietario);
-            cmd.Parameters.AddWithValue("@servicio", p.servicio);
+            cmd.Parameters.AddWithValue("@idProp", p.idProp);
+            cmd.Parameters.AddWithValue("@idTipoS", p.idTipoS);
             cmd.Parameters.AddWithValue("@precio", p.precio);
             cmd.Parameters.AddWithValue("@fechaPago", p.fechaPago);
 
@@ -127,10 +127,10 @@ namespace ProyectoDSWI.Models
                     PagoS1 reg = new PagoS1()
                     {
                         idPagoS = Convert.ToInt32(dr[0]),
-                        propietario = dr[1].ToString(),
-                        servicio = dr[2].ToString(),
+                        propietario = dr[5].ToString(),
+                        servicio = dr[6].ToString(),
                         precio = Convert.ToDecimal(dr[3]),
-                        fechaPago = Convert.ToDateTime(dr[4])
+                        fechaPago = Convert.ToDateTime(dr[4]),
 
                     };
                     lista.Add(reg);

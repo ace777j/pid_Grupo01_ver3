@@ -21,7 +21,7 @@ namespace ProyectoDSWI.Entity
         public DateTime fechaVencimiento { get; set; }
         [DisplayName("PROPIETARIO")]
         public string propietario { get; set; }
-        [DisplayName("PROPIETARIO")]
+        [DisplayName("DEPARTAMENTO")]
         public string departamento { get; set; }
     }
 }
