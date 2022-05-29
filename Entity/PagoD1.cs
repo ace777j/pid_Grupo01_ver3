@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoDSWI.Entity
 {
@@ -17,7 +18,8 @@ namespace ProyectoDSWI.Entity
         public decimal precio { get; set; }
         [DisplayName("FECHA DE PAGO")]
         public DateTime fechaPago { get; set; }
-        [DisplayName("FECHA DE VENCIMIENTO")]
+        [Required]
+        [Display(Name = "FECHA VENCIMIENTO")]
         public DateTime fechaVencimiento { get; set; }
         [DisplayName("PROPIETARIO")]
         public string propietario { get; set; }

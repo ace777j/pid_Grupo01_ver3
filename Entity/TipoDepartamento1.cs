@@ -13,5 +13,6 @@ namespace ProyectoDSWI.Entity
         public int nroBanos { get; set; }
         public string areaDepar { get; set; }
         public decimal precMens { get; set; }
+
     }
 }

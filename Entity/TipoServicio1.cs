@@ -10,5 +10,6 @@ namespace ProyectoDSWI.Entity
         public int idTipoS { get; set; }
         public string descripcion { get; set; }
         public decimal precS { get; set; }
+
     }
 }

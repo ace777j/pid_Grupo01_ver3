@@ -6,6 +6,7 @@
 
 <h2 class="text-center">REGISTRO DE DATOS - PAGO DE DEPARTAMENTOS</h2>
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -58,7 +59,7 @@
         </div>
     </div>
 }
- 
+
 <script>
   if ('@ViewBag.mensaje' != "") {
     alert('@ViewBag.mensaje')

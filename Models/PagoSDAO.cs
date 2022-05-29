@@ -132,6 +132,8 @@ namespace ProyectoDSWI.Models
                         precio = Convert.ToDecimal(dr[3]),
                         fechaPago = Convert.ToDateTime(dr[4]),
 
+
+
                     };
                     lista.Add(reg);
                 }
@@ -145,5 +147,7 @@ namespace ProyectoDSWI.Models
             finally { cn.Close(); }
             return lista;
         }
+
+
     }
 }

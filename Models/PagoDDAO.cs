@@ -11,7 +11,6 @@ using System.Data.SqlClient;
 
 namespace ProyectoDSWI.Models
 {
-
     public class PagoDDAO : IDaoPagoD<PagoD1>
     {
         public void ActualizarPagoDepartamento(PagoD1 p)

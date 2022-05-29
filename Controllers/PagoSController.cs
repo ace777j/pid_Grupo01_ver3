@@ -14,7 +14,6 @@ using ProyectoDSWI.Filters;
 
 namespace ProyectoDSWI.Controllers
 {
-
     public class PagoSController : Controller
     {
         private DB_PIGrupo01Entities1 db = new DB_PIGrupo01Entities1();

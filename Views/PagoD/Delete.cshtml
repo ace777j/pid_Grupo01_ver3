@@ -12,20 +12,20 @@
     <hr />
     <dl class="dl-horizontal">
         @*<dt>
-            @Html.DisplayNameFor(model => model.idPagoD)
-        </dt>
+                @Html.DisplayNameFor(model => model.idPagoD)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.idPagoD)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.idPagoD)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.idTipo)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.idTipo)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.idTipo)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.idTipo)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.propietario)
@@ -68,15 +68,14 @@
         </dd>
 
     </dl>
-     
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("REGRESAR", "Index")
+            <input type="submit" value="Dar de baja" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar", "Index")
         </div>
     }
 </div>

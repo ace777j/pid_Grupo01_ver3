@@ -41,5 +41,4 @@ namespace ProyectoDSWI.Models
             return lista;
         }
     }
-
 }
