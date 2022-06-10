@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProyectoDSWI.Entity.Incidente1>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">ATENCIÓN AL CLIENTE</h2>
+
+@using (Html.BeginForm())
+{
+    <strong>Departamento: @Html.DropDownList("depa", (SelectList)ViewBag.depa, new { @class = "form-control" })</strong>
+    <br />
+    <strong>Causa: @Html.DropDownList("causa", (SelectList)ViewBag.causa, new { @class = "form-control" })</strong>
+    <br />
+    <strong>Estado: @Html.DropDownList("est", (SelectList)ViewBag.estado, new { @class = "form-control" })</strong>
+    <br />
+    <input type="submit" value="Buscar" class="btn btn-success" />
+}
+<br />
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Código</th>
+        <th>Departamentoe</th>
+        <th>Causa</th>
+        <th>Estado</th>
+        <th style="text-align:center">Realizar Pago</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idIncidente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idDepa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcionC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcionE)
+            </td>
+            <td>
+                <button class="btn btn-warning btn-sm" type="button" id="btn_act"><span class="glyphicon glyphicon-edit"></span></button>
+            </td>
+        </tr>
+    }
+
+</table>
