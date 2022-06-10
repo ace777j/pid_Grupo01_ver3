@@ -1,0 +1,73 @@
+﻿@model ProyectoDSWI.Entity.PagoS1
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="text-center">CONFIRMACIÓN DE ELIMINAR REGISTRO DE PAGO SERVICIO</h2>
+
+<h3 class="text-center">Está seguro de dar de baja al Pago de Servicio?=> N° @Model.idPagoS</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.idProp)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idProp)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.idTipoS)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.idTipoS)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propietario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propietario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.servicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.servicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaPago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaPago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Dar de baja" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

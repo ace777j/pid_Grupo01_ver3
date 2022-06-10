@@ -4,27 +4,60 @@
     Layout = "~/Views/Shared/_LayaoutLogin.cshtml";
 }
 
-<h2 style="text-align:center; color:white" >Login</h2>
-<div class="row">
-    <div class="danger">
-        @ViewBag.Error
+@*<h2 style="text-align:center; color:white" >Login</h2>*@
+@*<div class="row">
+        <div class="danger">
+            @ViewBag.Error
+        </div>
+        <form action="@Url.Content("/Acceso/Login")" method="post">
+            <div style="text-align:center" class=" form-group">
+                <label style="color:white">Usuario</label>
+                <input type="email" name="User" />
+            </div>
+            <div style="text-align:center" class=" form-group">
+                <label style="color:white">Contraseña</label>
+                <input type="password" name="Pass" />
+            </div>
+            <div style="text-align:center" class=" form-group">
+                <input type="submit" value="Entrar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>*@
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first" style="background-color: #FFFFFF; height: 270px; width: 400px; padding: 00px 00px 00px 00px; margin: 200px auto; border-radius: 10px 10px 15px 15px; ">
+            <div class="fadeIn first" style="background-color: #0B56BF; height: 40px; border-radius: 10px 10px 0px 0px;">
+                <h2 style="text-align: center; color: white; ">LOGIN</h2>
+            </div>
+            <!-- Login Form -->
+
+            <form action="@Url.Content("~/Acceso/Login")" method="post" style="text-align: -webkit-center; padding: 20px 50px 50px 40px; ">
+
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input type="email" id="User" class="fadeIn second form-control" name="User" placeholder="login" required>
+                </div>
+                <br>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="password" id="Pass" class="fadeIn third form-control" name="Pass" placeholder="password" required>
+                </div>
+                <br>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Entrar</button>
+            </form>
+
+        </div>
+        <!-- Remind Passowrd -->
     </div>
-    <form action="@Url.Content("/Acceso/Login")" method="post">
-        <div style="text-align:center" class=" form-group">
-            <label style="color:white">Usuario</label>
-            <input type="email" name="User" />
-        </div>
-        <div style="text-align:center" class=" form-group">
-            <label style="color:white">Contraseña</label>
-            <input type="password" name="Pass" />
-        </div>
-        <div style="text-align:center" class=" form-group">
-            <input type="submit" value="Entrar" class="btn btn-success" />
-        </div>
-    </form>
 </div>
 
-<script>window.watsonAssistantChatOptions = {
+
+
+<script>
+    window.watsonAssistantChatOptions = {
         integrationID: "030a7e40-0bc7-4f90-ab60-d115334bf9b9", // The ID of this integration.
         region: "au-syd", // The region your integration is hosted in.
         serviceInstanceID: "f44b4051-b68a-4bc4-86b5-c545b1a9e19a", // The ID of your service instance.

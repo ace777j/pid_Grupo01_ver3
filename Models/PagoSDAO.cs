@@ -11,17 +11,18 @@ using System.Data.SqlClient;
 
 namespace ProyectoDSWI.Models
 {
-    public class MascotaDAO : IDaoMascota<Mascota1>
+    public class PagoSDAO : IDaoPagoS<PagoS1>
     {
-        public void ActualizarMascota(Mascota1 p)
+        public void ActualizarPagoServicio(PagoS1 p)
         {
             SqlConnection cn = DBAccess.getConecta();
-            SqlCommand cmd = new SqlCommand("usp_MascotaActualizar", cn);
+            SqlCommand cmd = new SqlCommand("usp_PagoSActualizar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@idMascota", p.idMascota);
-            cmd.Parameters.AddWithValue("@tipoMascota", p.tipoMascota);
-            cmd.Parameters.AddWithValue("@nroMascota", p.nroMascota);
+            cmd.Parameters.AddWithValue("@idPagoS", p.idPagoS);
             cmd.Parameters.AddWithValue("@idProp", p.idProp);
+            cmd.Parameters.AddWithValue("@idTipoS", p.idTipoS);
+            cmd.Parameters.AddWithValue("@precio", p.precio);
+            cmd.Parameters.AddWithValue("@fechaPago", p.fechaPago);
 
             try
             {
@@ -36,12 +37,12 @@ namespace ProyectoDSWI.Models
 
         }
 
-        public void BajaMascota(Mascota1 p)
+        public void BajaPagoServicio(PagoS1 p)
         {
             SqlConnection cn = DBAccess.getConecta();
-            SqlCommand cmd = new SqlCommand("usp_MascotaEliminar", cn);
+            SqlCommand cmd = new SqlCommand("usp_PagoSEliminar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@idMascota", p.idMascota);
+            cmd.Parameters.AddWithValue("@idPagoS", p.idPagoS);
 
             try
             {
@@ -55,13 +56,13 @@ namespace ProyectoDSWI.Models
             finally { cn.Close(); }
         }
 
-        public Mascota1 BuscarMascota(int id)
+        public PagoS1 BuscarPagoServicio(int id)
         {
-            Mascota1 reg = null;
+            PagoS1 reg = null;
             SqlConnection cn = DBAccess.getConecta();
-            SqlCommand cmd = new SqlCommand("usp_MascotaDatos", cn);
+            SqlCommand cmd = new SqlCommand("usp_PagoSDatos", cn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@idMascota", id);
+            cmd.Parameters.AddWithValue("@idPagoS", id);
 
             try
             {
@@ -69,12 +70,14 @@ namespace ProyectoDSWI.Models
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    reg = new Mascota1()
+                    reg = new PagoS1()
                     {
-                        idMascota = Convert.ToInt32(dr[0]),
-                        tipoMascota = dr[1].ToString(),
-                        nroMascota = dr[2].ToString(),
-                        idProp = Convert.ToInt32(dr[3])
+                        idPagoS = Convert.ToInt32(dr[0]),
+                        propietario = dr[1].ToString(),
+                        servicio = dr[2].ToString(),
+                        precio = Convert.ToDecimal(dr[3]),
+                        fechaPago = Convert.ToDateTime(dr[4])
+
                     };
                 }
                 dr.Close();
@@ -87,14 +90,15 @@ namespace ProyectoDSWI.Models
             return reg;
         }
 
-        public void InsertarMascota(Mascota1 p)
+        public void InsertarPagoServicio(PagoS1 p)
         {
             SqlConnection cn = DBAccess.getConecta();
-            SqlCommand cmd = new SqlCommand("usp_MascotaInsertar", cn);
+            SqlCommand cmd = new SqlCommand("usp_PagoSInsertar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@tipoMascota", p.tipoMascota);
-            cmd.Parameters.AddWithValue("@nroMascota", p.nroMascota);
             cmd.Parameters.AddWithValue("@idProp", p.idProp);
+            cmd.Parameters.AddWithValue("@idTipoS", p.idTipoS);
+            cmd.Parameters.AddWithValue("@precio", p.precio);
+            cmd.Parameters.AddWithValue("@fechaPago", p.fechaPago);
 
             try
             {
@@ -108,31 +112,31 @@ namespace ProyectoDSWI.Models
             finally { cn.Close(); }
         }
 
-        public List<Mascota1> ListarMascotas()
+        public List<PagoS1> ListarPagoServicio()
         {
-            List<Mascota1> lista = new List<Mascota1>();
+            List<PagoS1> lista = new List<PagoS1>();
             SqlConnection cn = DBAccess.getConecta();
-            SqlCommand cmd = new SqlCommand("usp_MascotaListar", cn);
+            SqlCommand cmd = new SqlCommand("usp_PagoSListar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
-
             try
             {
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Mascota1 reg = new Mascota1()
+                    PagoS1 reg = new PagoS1()
                     {
-                        idMascota = Convert.ToInt32(dr[0]),
-                        tipoMascota = dr[1].ToString(),
-                        nroMascota = dr[2].ToString(),
-                        idProp = Convert.ToInt32(dr[3]),
-                        nomProp = dr[4].ToString(),
-                        apeProp= dr[5].ToString()
+                        idPagoS = Convert.ToInt32(dr[0]),
+                        propietario = dr[5].ToString(),
+                        servicio = dr[6].ToString(),
+                        precio = Convert.ToDecimal(dr[3]),
+                        fechaPago = Convert.ToDateTime(dr[4]),
+
                     };
                     lista.Add(reg);
                 }
                 dr.Close();
+
             }
             catch (SqlException ex)
             {

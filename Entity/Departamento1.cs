@@ -25,9 +25,10 @@ namespace ProyectoDSWI.Entity
         [Required(ErrorMessage = "Esta celda es necesaria de completar")]
         [DisplayName("Estado")]
         public int idEstado { get; set; }
-
+        public string descripcion { get; set; }
         [Required(ErrorMessage = "Esta celda es necesaria de completar")]
         [DisplayName("Tipo")]
         public int idTipo { get; set; }
+        public string tipdescripcion { get; set; }
     }
 }

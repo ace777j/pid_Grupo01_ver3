@@ -58,7 +58,10 @@ namespace ProyectoDSWI.Controllers
 
                     idEstado = dr.GetInt32(4),
 
-                    idTipo = dr.GetInt32(5)
+                    idTipo = dr.GetInt32(5),
+                    
+                    descripcion= dr.GetString(6),
+                    tipdescripcion = dr.GetString(7)
                 };
                 temporal.Add(reg);
             }

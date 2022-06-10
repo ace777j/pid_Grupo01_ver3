@@ -11,14 +11,13 @@ using System.Data.SqlClient;
 
 namespace ProyectoDSWI.Models
 {
-    public class TipoDepartamentoDAO : IDaoTipoDepartamento<TipoDepartamento1>
+    public class TipoServicioDAO : IDaoTipoServicio<TipoServicio1>
     {
-
-        public List<TipoDepartamento1> ListarTipoDepartamentos()
+        public List<TipoServicio1> ListarTipoServicio()
         {
-            List<TipoDepartamento1> lista = new List<TipoDepartamento1>();
+            List<TipoServicio1> lista = new List<TipoServicio1>();
             SqlConnection cn = DBAccess.getConecta();
-            SqlCommand cmd = new SqlCommand("usp_TipoDepartamentoListar", cn);
+            SqlCommand cmd = new SqlCommand("usp_TipoServicioListar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             try
             {
@@ -26,14 +25,11 @@ namespace ProyectoDSWI.Models
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    TipoDepartamento1 reg = new TipoDepartamento1()
+                    TipoServicio1 reg = new TipoServicio1()
                     {
-                        idTipo = Convert.ToInt32(dr[0]),
+                        idTipoS = Convert.ToInt32(dr[0]),
                         descripcion = dr[1].ToString(),
-                        nroDormitorios = Convert.ToInt32(dr[2]),
-                        nroBanos = Convert.ToInt32(dr[3]),
-                        areaDepar = dr[4].ToString(),
-                        precMens = Convert.ToDecimal(dr[5])
+                        precS = Convert.ToDecimal(dr[2])
                     };
                     lista.Add(reg);
                 }
@@ -45,4 +41,5 @@ namespace ProyectoDSWI.Models
             return lista;
         }
     }
+
 }
