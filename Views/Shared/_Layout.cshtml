@@ -35,7 +35,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Bienvenido</span>
-                            <h2>Admin</h2>
+                            <h2>Pancho</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -57,7 +57,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="@Url.Action("Index", "Propietario")"><i class="fa fa-users"></i> Propietario<span class="label label-success pull-right"></span></a></li>
-
+                                <li><a href="@Url.Action("Index", "Visita")"><i class="fa fa-calendar"></i> Visitas<span class="label label-success pull-right"></span></a></li>
                                 <li>
                                     <a><i class="fa fa-credit-card"></i> Pago <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -65,16 +65,13 @@
                                         <li><a href="@Url.Action( "Index", "PagoD")">Pago Departamento</a></li>
                                     </ul>
                                 </li>
-
                                 <li>
-                                    <a><i class="fa fa-file-o"></i> Reporte <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-info-circle"></i> Incidentes <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="form.html">Reporte Servicio</a></li>
-                                        <li><a href="form.html">Repostre Pagos</a></li>
-                                        <li><a href="form.html">Reporte Cliente</a></li>
+                                        <li><a href="@Url.Action( "Create", "Incidente")">Registro</a></li>
+                                        <li><a href="@Url.Action( "Index", "Incidente")">Listado</a></li>
                                     </ul>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -93,7 +90,7 @@
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="~/Content/images/img.png" alt="">Admin
+                                    <img src="~/Content/images/img.png" alt="">Pancho
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="javascript:;"> Perfil</a>
