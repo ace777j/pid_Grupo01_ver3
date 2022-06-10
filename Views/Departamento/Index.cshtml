@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProyectoDSWI.Entity.Departamento1>
+@model IEnumerable<ProyectoDSWI.Entity.Departamento1>
 
 @{
     ViewBag.Title = "Index";
@@ -7,7 +7,7 @@
 <h2 class="text-center">MAESTRO DE DEPARTAMENTOS</h2>
 
 <p>
-    @Html.ActionLink("Agregar Nuevo Departamento", "Create", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Agregar Nuevo ", "Create", null, new { @class = "btn btn-success" })
 </p>
 <p>
     <a href="@Url.Action( "Index", "TipoDepartamento")">Ver Tipos de Departamentos</a>
@@ -52,3 +52,4 @@
     }
 
 </table>
+

@@ -25,5 +25,8 @@ namespace ProyectoDSWI.Entity
         [Required(ErrorMessage = "Esta celda es necesaria de completar")]
         [DisplayName("Propietario")]
         public int idProp { get; set; }
+        public string nomProp { get; set; }
     }
 }
+
+
