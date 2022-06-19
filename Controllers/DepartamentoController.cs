@@ -20,6 +20,16 @@ namespace ProyectoDSWI.Controllers
     {
         private DB_PIGrupo01Entities1 db = new DB_PIGrupo01Entities1();
 
+<<<<<<< HEAD
+=======
+        /*[AuthorizeUser(idOperacion: 5)]
+        public ActionResult Index2()
+        {
+            return View(db.Departamento.ToList().OrderBy(x => x.idDepa));
+        }*/
+
+
+>>>>>>> 800eee3bf849d02590292c8e2ff58216055c3d06
         SqlConnection cn = new SqlConnection(
                 ConfigurationManager.ConnectionStrings["DB_PIGrupo011"].ConnectionString);
         // GET: Departamento
@@ -48,7 +58,10 @@ namespace ProyectoDSWI.Controllers
 
                     idEstado = dr.GetInt32(4),
 
-                    idTipo = dr.GetInt32(5)
+                    idTipo = dr.GetInt32(5),
+                    
+                    descripcion= dr.GetString(6),
+                    tipdescripcion = dr.GetString(7)
                 };
                 temporal.Add(reg);
             }

@@ -44,7 +44,10 @@ namespace ProyectoDSWI.Controllers
 
                     nroMascota = dr.GetString(2),
 
-                    idProp = dr.GetInt32(3)
+                    idProp = dr.GetInt32(3),
+
+                    nomProp = dr.GetString(4),
+                    apeProp= dr.GetString(5)
                 };
                 temporal.Add(reg);
             }
@@ -64,7 +67,8 @@ namespace ProyectoDSWI.Controllers
                 Propietario1 reg = new Propietario1
                 {
                     idProp = dr.GetInt32(0),
-                    apeProp = dr.GetString(1)
+                    nomProp=dr.GetString(1),
+                    apeProp = dr.GetString(2)
                 };
                 temporal.Add(reg);
             }
@@ -85,6 +89,7 @@ namespace ProyectoDSWI.Controllers
 
         public ActionResult Create()
         {
+
             ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp");
             return View(new Mascota1());
         }
@@ -110,7 +115,7 @@ namespace ProyectoDSWI.Controllers
                 cmd.Parameters.AddWithValue("@idProp", reg.idProp);
                 int q = cmd.ExecuteNonQuery();
                 tr.Commit();
-                ViewBag.mensaje = q.ToString() + " Mascota Agregada";
+                ViewBag.mensaje = q.ToString() + " Mascota Agregada Correctamente";
             }
             catch (SqlException ex)
             {
@@ -121,6 +126,7 @@ namespace ProyectoDSWI.Controllers
             {
                 cn.Close();
             }
+
 
 
             ViewBag.propietarios = new SelectList(Propietarios(), "idProp", "apeProp", reg.idProp);

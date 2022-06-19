@@ -1,0 +1,67 @@
+﻿@model ProyectoDSWI.Entity.PagoS1
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="text-center">ACTUALIZACIÓN DE DATOS - PAGO DE SERVICIOS</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.propietario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.propietario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.propietario, "", new { @class = "text-danger" })*@
+                @Html.DropDownList("idProp", (SelectList)ViewBag.propietarios, "--Seleccione Propietario--", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.servicio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.servicio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.servicio, "", new { @class = "text-danger" })*@
+                @Html.DropDownList("idTipoS", (SelectList)ViewBag.tiposervicio, "--Seleccione Servicio--", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fechaPago, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaPago, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fechaPago, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Actualizar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+  if ('@ViewBag.mensaje' != "") {
+    alert('@ViewBag.mensaje')
+  }
+</script>
+
+<div>
+    @Html.ActionLink("REGRESAR", "Index")
+</div>
+

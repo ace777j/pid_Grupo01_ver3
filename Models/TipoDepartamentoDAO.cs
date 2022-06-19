@@ -13,6 +13,7 @@ namespace ProyectoDSWI.Models
 {
     public class TipoDepartamentoDAO : IDaoTipoDepartamento<TipoDepartamento1>
     {
+
         public List<TipoDepartamento1> ListarTipoDepartamentos()
         {
             List<TipoDepartamento1> lista = new List<TipoDepartamento1>();

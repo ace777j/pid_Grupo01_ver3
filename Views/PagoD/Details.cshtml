@@ -1,0 +1,76 @@
+﻿@model ProyectoDSWI.Entity.PagoD1
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PagoD1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idPagoD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idPagoD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idProp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idProp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idTipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idTipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaPago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaPago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaVencimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaVencimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("REGRESAR", "Index")
+</p>
+

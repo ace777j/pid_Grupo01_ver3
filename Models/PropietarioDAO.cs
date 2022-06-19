@@ -38,16 +38,20 @@ namespace ProyectoDSWI.Models
             finally { cn.Close(); }
 
         }
-
+        
         public void BajaPropietario(Propietario1 p)
+            
         {
+            
             SqlConnection cn = DBAccess.getConecta();
             SqlCommand cmd = new SqlCommand("usp_PropietarioEliminar", cn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@idProp", p.idProp);
 
+          
             try
             {
+               
                 cn.Open();
                 bool ires = cmd.ExecuteNonQuery() == 1 ? true : false;
             }
@@ -57,7 +61,7 @@ namespace ProyectoDSWI.Models
             }
             finally { cn.Close(); }
         }
-
+       
         public Propietario1 BuscarPropietario(int id)
         {
             Propietario1 reg = null;
