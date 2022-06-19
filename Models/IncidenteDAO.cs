@@ -15,12 +15,58 @@ namespace ProyectoDSWI.Models
     {
         public void ActualizarIncidente(Incidente1 p)
         {
-            throw new NotImplementedException();
+            SqlConnection cn = DBAccess.getConecta();
+            SqlCommand cmd = new SqlCommand("usp_IncidenteActualizar", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@idIncidente", p.idIncidente);
+            cmd.Parameters.AddWithValue("@idDepa", p.idDepa);
+            cmd.Parameters.AddWithValue("@idCausa", p.idCausa);
+            cmd.Parameters.AddWithValue("@idEstado", p.idEstado);
+            cmd.Parameters.AddWithValue("@comentario", p.comentario);
+
+            try
+            {
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally { cn.Close(); }
         }
 
         public Incidente1 BuscarIncidente(int id)
         {
-            throw new NotImplementedException();
+            Incidente1 reg = null;
+            SqlConnection cn = DBAccess.getConecta();
+            SqlCommand cmd = new SqlCommand("usp_IncidenteDatos", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@idIncidente", id);
+
+            try
+            {
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    reg = new Incidente1()
+                    {
+                        idIncidente = Convert.ToInt32(dr[0]),
+                        idDepa = Convert.ToInt32(dr[1]),
+                        descripcionC = dr[2].ToString(),
+                        descripcionE = dr[3].ToString(),
+                        comentario = dr[4].ToString()
+                    };
+                }
+                dr.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally { cn.Close(); }
+            return reg;
         }
 
         public void InsertarIncidente(Incidente1 p)

@@ -90,5 +90,72 @@ namespace ProyectoPidG01.Controllers
 
             return View(objInc.ListarIncidentes(depa, causa, est).ToList());
         }
+
+        public ActionResult Create()
+        {
+            ViewBag.depa = new SelectList(Departamentos(), "idDepa", "idDepa");
+            ViewBag.causa = new SelectList(Causas(), "idCausa", "descripcion");
+            return View(new Incidente1());
+        }
+
+        [HttpPost]
+        public ActionResult Create(Incidente1 reg)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(reg);
+            }
+            ViewBag.mensaje = " ";
+            cn.Open();
+            SqlTransaction tr = cn.BeginTransaction(IsolationLevel.Serializable);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("usp_IncidenteInsertar", cn, tr);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@idDepa", reg.idDepa);
+                cmd.Parameters.AddWithValue("@idCausa", reg.idCausa);
+                cmd.Parameters.AddWithValue("@descripcion", reg.comentario);
+                int q = cmd.ExecuteNonQuery();
+                tr.Commit();
+                ViewBag.mensaje = q.ToString() + " Incidente Agregado";
+            }
+            catch (SqlException ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                tr.Rollback();
+            }
+            finally
+            {
+                cn.Close();
+            }
+            ViewBag.depa = new SelectList(Departamentos(), "idDepa", "idDepa");
+            ViewBag.causa = new SelectList(Causas(), "idCausa", "descripcion");
+            return View(reg);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            Incidente1 reg = objInc.BuscarIncidente(id);
+            ViewBag.causa = new SelectList(Causas(), "idCausa", "descripcion");
+            ViewBag.estado = new SelectList(Estados(), "idEstado", "descripcion");
+            return View(objInc.BuscarIncidente(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Incidente1 reg)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    objInc.ActualizarIncidente(reg);
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            { return View(); }
+        }
     }
 }
