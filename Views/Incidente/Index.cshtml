@@ -24,7 +24,7 @@
         <th>Departamentoe</th>
         <th>Causa</th>
         <th>Estado</th>
-        <th style="text-align:center">Realizar Pago</th>
+        <th style="text-align:center">Revisión</th>
     </tr>
 
     @foreach (var item in Model)
@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.descripcionE)
             </td>
             <td>
-                <button class="btn btn-warning btn-sm" type="button" id="btn_act"><span class="glyphicon glyphicon-edit"></span></button>
+                <button class="btn btn-warning btn-sm" type="button" id="btn_act" onclick="location.href = 'Incidente/Edit?id=@item.idIncidente'"><span class="glyphicon glyphicon-edit"></span></button>
             </td>
         </tr>
     }
